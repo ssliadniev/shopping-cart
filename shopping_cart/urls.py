@@ -1,9 +1,12 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
-from .views import CurrentUser
+
+main_urls = [
+    #path('api/', )
+]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/user/', CurrentUser.as_view()),
+    path('user/', include('user.urls')),
 ]

@@ -37,14 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'user.apps.UserConfig',
-    'phonenumber_field',
-    'address',
     'rest_framework',
-    'apiview',
 ]
 
-AUTH_USER_MODEL = 'user.CustomUser'
+THIRD_PARTY_APPS = []
+
+PROJECT_APPS = [
+    'user'
+]
+
+INSTALLED_APPS = INSTALLED_APPS + THIRD_PARTY_APPS + PROJECT_APPS
+
+AUTH_USER_MODEL = 'user.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
