@@ -38,6 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'django.contrib.sites',
+    'rest_auth',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration'
 ]
 
 THIRD_PARTY_APPS = []
@@ -49,6 +55,8 @@ PROJECT_APPS = [
 INSTALLED_APPS = INSTALLED_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
 AUTH_USER_MODEL = 'user.User'
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
