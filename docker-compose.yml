@@ -1,0 +1,27 @@
+version: "2"
+services:
+  db:
+    image: mdillon/postgis:9.6
+    expose:
+      - 5432
+    environment:
+      POSTGRES_USER:
+      POSTGRES_PASSWORD:
+
+  django:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      - DJANGO_SETTINGS_MODULE=mysite.settings
+    volumes:
+      - ./:/code
+    working_dir: /code
+    depends_on:
+      - db
+    ports:
+      - '8000:8000'
+    command: python manage.py runserver 0.0.0.0:8000
+
+
+
