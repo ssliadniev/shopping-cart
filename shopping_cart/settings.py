@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'rest_auth',
     'allauth',
     'allauth.account',
-    'rest_auth.registration'
+    'rest_auth.registration',
+    'rest_framework_swagger'
 ]
 
 THIRD_PARTY_APPS = []
@@ -146,3 +147,11 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SENDGRID_API_KEY = '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'
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
