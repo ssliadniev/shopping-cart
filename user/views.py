@@ -1,12 +1,11 @@
 from rest_framework.generics import RetrieveUpdateAPIView
 from .serializers import UserSerializer
 from rest_framework.permissions import IsAuthenticated
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 
 
 
 class CurrentUserRetrieveUpdateAPIView(RetrieveUpdateAPIView):
-    User = get_user_model()
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (IsAuthenticated,)
