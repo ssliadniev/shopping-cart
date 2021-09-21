@@ -3,12 +3,11 @@ from django.urls import path, include
 
 
 main_urls = [
-    #path('api/', )
+    path('admin/', admin.site.urls),
+    path('api/', include('user.urls'))
 ]
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('user/', include('user.urls')),
-    path('rest-auth/', include('rest_auth.urls')),
-    path('rest-auth/registration/', include('rest_auth.registration.urls'))
+    path('auth/', include('rest_auth.urls')),
+    path('auth/registration/', include('rest_auth.registration.urls'))
 ]
