@@ -22,8 +22,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-379b*1rdlg21)1to@d(_w=!b7&yup+)s22o968^wq_fl(xy-4^'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -148,7 +146,6 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SENDGRID_API_KEY = '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'
 
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587

@@ -1,11 +1,17 @@
-from django.test import TestCase
+from django.test import TestCase  # check classes
 from django.contrib.auth.models import User
 
 
 class UserModelTestcase(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        User.objects.create(first_name="Peter", last_name="John", phone='123456789')
+
+    def test_current_user(self):
+        # get current user endpoint (view)
+        # check
+        pass
+
+    def test_update_current_user(self):
+
+        pass
 
     def test_string_method(self):
         student = User.objects.get(id=1)
