@@ -3,7 +3,7 @@ Django project "Shopping cart"
 
 ## ER-diagram 
 
-![](https://github.com/ssliadniev/shopping-cart/blob/master/images/ER-diagram.pdf)
+![ER-diagram](https://github.com/ssliadniev/shopping-cart/blob/master/images/ER-diagram.pdf)
 
 
 ## Prerequisites
