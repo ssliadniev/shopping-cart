@@ -1,9 +1,17 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework_swagger.views import get_swagger_view
 
-from .views import CurrentUser
+schema_view = get_swagger_view(title='Shopping Cart_Swagger')
+
+main_urls = [
+    path('user/', include('user.urls'))
+]
 
 urlpatterns = [
+    path('auth/', include('rest_auth.urls')),
+    path('auth/registration/', include('rest_auth.registration.urls')),
     path('admin/', admin.site.urls),
-    path('/user/', CurrentUser.as_view()),
+    path('api/', include(main_urls)),
+    path('swagger/', schema_view)
 ]
