@@ -1,6 +1,11 @@
 # shopping-cart
 Django project "Shopping cart"
 
+## ER-diagram 
+
+![](https://github.com/ssliadniev/shopping-cart/blob/master/images/ER-diagram.pdf)
+
+
 ## Prerequisites
 
 ![](https://img.shields.io/badge/Docker-v.5.0.0-brightgreen)
