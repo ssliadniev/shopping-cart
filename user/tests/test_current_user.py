@@ -12,6 +12,7 @@ class UserModelTestcase(TransactionTestCase):
         #user = User.objects.get(pk=1)
         #self.assertEqual(user.first_name, "Serhii")
         pass
+
     def test_update_current_user(self):
 
         pass
