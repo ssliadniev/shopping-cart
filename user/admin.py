@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 
 class UserAdmin(admin.ModelAdmin):
@@ -27,8 +27,9 @@ class UserAdmin(admin.ModelAdmin):
     search_fields = (
         "first_name",
         "last_name"
-    )  # fitst name, fast name EX: Ivan Lucinov, i.lucinov@...
+    )
 
 
 admin.site.register(User, UserAdmin)
-# remove Group, Site, ....
+admin.site.unregister(Group)
+
