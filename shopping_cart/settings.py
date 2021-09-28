@@ -11,9 +11,9 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 DEBUG = env.bool('DEBUG', default=False)
 TEMPLATE_DEBUG = DEBUG
 
-SECRET_KEY = env.str('SECRET_KEY')
+SECRET_KEY = env.str('SECRET_KEY', default=" ")
 
-ALLOWED_HOSTS = env.str("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = env.str("DJANGO_ALLOWED_HOSTS", default=" ")
 
 
 INSTALLED_APPS = [
@@ -132,4 +132,4 @@ EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = env.str('SENDGRID_API_KEY')
+EMAIL_HOST_PASSWORD = env.str('SENDGRID_API_KEY', default=" ")
