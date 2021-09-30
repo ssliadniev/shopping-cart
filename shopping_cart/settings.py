@@ -13,7 +13,7 @@ TEMPLATE_DEBUG = DEBUG
 
 SECRET_KEY = env.str('SECRET_KEY')
 
-ALLOWED_HOSTS = env.str("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ["*"]
 
 
 INSTALLED_APPS = [
@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'shopping_cart.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env.str('DATABASE_NAME'),
-        'USER': env.str('DATABASE_USER'),
-        'PASSWORD': env.str('DATABASE_PASSWORD'),
-        'HOST': env.str('DATABASE_HOST'),
-        'PORT': env.int('DATABASE_PORT'),
+        'NAME': "shopping_cart",
+        'USER': "shopping_cart",
+        'PASSWORD': "wTAAC9rwTsfIR",
+        'HOST': "db",
+        'PORT': "5432",
     }
 }
 
@@ -121,6 +121,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "templates/images/")]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

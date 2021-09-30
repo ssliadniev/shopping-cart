@@ -16,8 +16,8 @@ def wait_port_is_open(host, port):
 @task
 def run_local(ctx):
     wait_port_is_open('db', 5432)
-    ctx.run('python3 manage.py collectstatic')
+    ctx.run('python manage.py collectstatic --noinput')
     # download dump DB
-    ctx.run("python3 ./manage.py makemigrations")
-    ctx.run("python3 ./manage.py migrate")
-    ctx.run("python3 ./manage.py runserver 0.0.0.0:8000")
+    ctx.run("python ./manage.py makemigrations")
+    ctx.run("python ./manage.py migrate")
+    ctx.run("python ./manage.py runserver 0.0.0.0:8000")
