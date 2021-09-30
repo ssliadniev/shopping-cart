@@ -5,9 +5,8 @@ services:
     expose:
       - 5432
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres_spoon
-      POSTGRES_DB: shopping_cart
+      POSTGRES_USER: shopping_cart
+      POSTGRES_PASSWORD: wTAAC9rwTsfIR
   django:
     build:
       context: ./
@@ -23,4 +22,5 @@ services:
       - db
     ports:
       - '8000:8000'
-    command: bash -c "pip install -r requirements.txt && invoke run-local"
+    command: /bin/bash -c "pip install --upgrade pip && pip install -r requirements.txt && exec invoke run-local"
+
