@@ -30,13 +30,14 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
-    'rest_framework_swagger'
+    'rest_framework_swagger',
 ]
 
 THIRD_PARTY_APPS = []
 
 PROJECT_APPS = [
-    'user'
+    'user',
+    'products'
 ]
 
 INSTALLED_APPS = INSTALLED_APPS + THIRD_PARTY_APPS + PROJECT_APPS
@@ -128,6 +129,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
 
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
