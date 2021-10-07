@@ -1,6 +1,7 @@
 from django.test import TransactionTestCase
 from django.urls import reverse
 from rest_framework.status import HTTP_200_OK, HTTP_405_METHOD_NOT_ALLOWED
+from user.models import User
 
 
 class AuthTest(TransactionTestCase):
@@ -16,8 +17,11 @@ class AuthTest(TransactionTestCase):
             "password1": "12345qwerty",
             "password2": "12345qwerty"
         }
+        last_user = User.objects.all().last()
         response = self.client.post(self.register_url, data)
         self.assertEqual(response.status_code, HTTP_200_OK)
+        self.assertEqual(data["email"], last_user["email"])
+        self.assertEqual(response.data["detail"], "Verification e-mail sent.")
 
     def test_register_failed(self):
         response = self.client.post(self.register_url)
