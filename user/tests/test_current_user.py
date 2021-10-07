@@ -28,8 +28,16 @@ class CurrentUserTestcase(TransactionTestCase):
         self.assertEqual(response.data, expected_data)
 
     def test_update_current_user_failed(self):
-        response = self.client.update(self.user)
+        response = self.client.post(self.user)
         self.assertEqual(response.status_code, HTTP_401_UNAUTHORIZED)
 
     def test_update_current_user_success(self):
         self.client.force_login(self.user)
+        data = {
+            "username": "SerhiiSliadniev",
+            "email": "slplspsp@gmail.com",
+            "first_name": "Serhii",
+            "last_name": "Sliadniev",
+        }
+        response = self.client.post(self.url, data)
+        self.assertEqual(response.status_code, HTTP_200_OK)
