@@ -41,3 +41,4 @@ class CurrentUserTestcase(TransactionTestCase):
         }
         response = self.client.post(self.url, data)
         self.assertEqual(response.status_code, HTTP_200_OK)
+        self.assertEqual(response.data, data)
