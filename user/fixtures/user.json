@@ -1,0 +1,20 @@
+[
+  {
+    "model": "user.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$HL4buv3S4LcO7LoaFAkgzH$Pq8upJRJBoKyiZH2sVKvI+g9Yj2HuI0EchBFr1Ay8sw=",
+      "last_login": "2019-06-08",
+      "is_superuser": "True",
+      "username": "ssliadniev",
+      "first_name": "Serhii",
+      "last_name": "Sliadniev",
+      "email": "slplspsp@gmail.com",
+      "is_staff": "True",
+      "is_active": "True",
+      "date_joined": "2017-04-10",
+      "phone": "380687204654",
+      "address": "Kryvyi Rih city Pushkinskaya street 5"
+    }
+  }
+]
