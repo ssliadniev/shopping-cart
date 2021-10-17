@@ -6,7 +6,8 @@ from rest_framework_swagger.views import get_swagger_view
 
 
 main_urls = [
-    path('user/', include('user.urls'))
+    path('user/', include('user.urls')),
+    path('products/', include('products.urls'))
 ]
 
 schema_view = get_swagger_view(title="Shopping Cart Swagger")
