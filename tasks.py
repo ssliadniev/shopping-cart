@@ -18,7 +18,7 @@ def run_local(ctx):
     wait_port_is_open('db', 5432)
     ctx.run('python manage.py collectstatic --noinput')
     ctx.run('python manage.py dbshell < drop_db.sql')
-    ctx.run('python manage.py dbshell < db_dump.sql')
+    ctx.run('python manage.py dbshell < db_dump')
     ctx.run("python ./manage.py makemigrations")
     ctx.run("python ./manage.py migrate")
     ctx.run("python ./manage.py runserver 0.0.0.0:8000")
