@@ -12,13 +12,14 @@ services:
       context: ./
       dockerfile: Dockerfile
     environment:
-      - DJANGO_SETTINGS_MODULE=mysite.settings
+      - DJANGO_SETTINGS_MODULE=shopping_cart.settings
     volumes:
       - ./:/code
+    env_file:
+      - .env
     working_dir: /code
     depends_on:
       - db
     ports:
       - '8000:8000'
     command: /bin/bash -c "pip install --upgrade pip && pip install -r requirements.txt && exec invoke run-local"
-
