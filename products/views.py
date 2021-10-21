@@ -1,9 +1,11 @@
 from .models import Category, Product
-from django.views.generic.detail import DetailView
+from rest_framework.generics import ListCreateAPIView
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.shortcuts import render, get_object_or_404
 
 
-class CategoryDetailView(DetailView):
-    model = Category
+class CategoryListCreateAPIView(ListCreateAPIView):
+    queryset = Category.objects.all()
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
-    categories = Category.objects.all()
+
