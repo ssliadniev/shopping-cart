@@ -5,11 +5,12 @@ from django.urls import path, include
 from rest_framework_swagger.views import get_swagger_view
 
 
+schema_view = get_swagger_view(title="Shopping Cart Swagger")
+
 main_urls = [
-    path('user/', include('user.urls'))
+    path('user/', include('user.urls', namespace='user'))
 ]
 
-schema_view = get_swagger_view(title="Shopping Cart Swagger")
 urlpatterns = [
     path('auth/', include('rest_auth.urls')),
     path('auth/registration/', include('rest_auth.registration.urls')),
