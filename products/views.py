@@ -1,38 +1,22 @@
 from .models import Category, Product
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from serializers import CategorySerializer, ProductSerializer
-from django.shortcuts import render, get_object_or_404
 
 
 class CategoryListCreateAPIView(ListCreateAPIView):
-    categories = Category.objects.all()
+    queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = [IsAdminUser, IsAuthenticatedOrReadOnly]
-
-    def get_queryset(self):
-        return get_object_or_404(self.categories)
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 class ProductListCreateAPIView(ListCreateAPIView):
-    products = Product.objects.all()
+    queryset = Product.objects.filter(available=True)
     serializer_class = ProductSerializer
-    permission_classes = [IsAdminUser, IsAuthenticatedOrReadOnly]
-
-    def get_product_list(self, category=None):
-        category = None
-        categories = Category.objects.all()
-        products = Product.objects.filter(available=True)
-        if category:
-            products = products.filter(slug=category)
-        return products
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 class ProductRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
-    products = Product.objects.all()
+    queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    permission_classes = [IsAdminUser, IsAuthenticatedOrReadOnly]
-
-    def get_product_detail(self, id, slug):
-        product = get_object_or_404(Product, id=id, slug=slug, available=True)
-        return product
+    permission_classes = [IsAuthenticatedOrReadOnly]
