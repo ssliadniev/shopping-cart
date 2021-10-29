@@ -6,7 +6,7 @@ from rest_framework_swagger.views import get_swagger_view
 
 
 main_urls = [
-    path('user/', include('user.urls'))
+    path('user/', include('user.urls', namespace="user")),
 ]
 
 schema_view = get_swagger_view(title="Shopping Cart Swagger")
@@ -15,7 +15,7 @@ urlpatterns = [
     path('auth/registration/', include('rest_auth.registration.urls')),
     path('admin/', admin.site.urls),
     path('api/', include(main_urls)),
-    path('swagger/', schema_view)
+    path('swagger/', schema_view),
 ]
 
 if settings.DEBUG:

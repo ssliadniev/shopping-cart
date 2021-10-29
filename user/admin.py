@@ -1,7 +1,10 @@
 from django.contrib import admin
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group
+
+from user.models import User
 
 
+@admin.register(User)
 class UserAdmin(admin.ModelAdmin):
 
     fieldsets = [
@@ -22,7 +25,7 @@ class UserAdmin(admin.ModelAdmin):
         ),
     ]
 
-    list_display_links = ("first_name", "last_name", "email")
+    list_display = ("first_name", "last_name", "email")
     list_filter = ["last_name"]
     search_fields = (
         "first_name",
@@ -30,6 +33,4 @@ class UserAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(User, UserAdmin)
 admin.site.unregister(Group)
-
