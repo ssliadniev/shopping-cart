@@ -8,7 +8,7 @@ class Category(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ('name', )
+        ordering = ('title', )
         verbose_name = 'category'
         verbose_name_plural = 'categories'
 
@@ -27,7 +27,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
 
     class Meta:
-        ordering = ('name',)
+        ordering = ('title',)
 
     def __str__(self):
         return self.title
