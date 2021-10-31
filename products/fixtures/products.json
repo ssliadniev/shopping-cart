@@ -1,0 +1,58 @@
+[
+  {
+    "pk": 1,
+    "model": "products.product",
+    "fields": {
+      "category": "Category_1",
+      "title": "Product_1",
+      "slug": "product1",
+      "description": "some description for product_1",
+      "price": "132.32",
+      "available": true,
+      "in_stock": "3",
+      "image": ""
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+      "category": "Category_2",
+      "title": "Product_2",
+      "slug": "product2",
+      "description": "some description for product_2",
+      "price": "54.32",
+      "available": true,
+      "in_stock": "10",
+      "image": ""
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+      "category": "Category_3",
+      "title": "Product_3",
+      "slug": "product3",
+      "description": "some description for product_3",
+      "price": "567.22",
+      "available": true,
+      "in_stock": "0",
+      "image": ""
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+      "category": "Category_4",
+      "title": "Product_4",
+      "slug": "product4",
+      "description": "some description for product_4",
+      "price": "123.56",
+      "available": false,
+      "in_stock": "0",
+      "image": ""
+    }
+  }
+]
