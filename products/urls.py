@@ -5,7 +5,7 @@ from .views import CategoryListCreateAPIView, ProductListCreateAPIView,  Product
 
 urlpatterns = [
     path('', ProductListCreateAPIView.as_view(), name="list-create"),
-    path('<pk:int>/', ProductRetrieveUpdateDestroyAPIView.as_view(), name="ret...."),  # pk or int first?
-    path('categories/', CategoryListCreateAPIView.as_view(), name="categories-list..."),
-    path('categories/<id>/',)
+    path('<int:pk>/', ProductRetrieveUpdateDestroyAPIView.as_view(), name="retrieve-update-destroy"),
+    path('categories/', CategoryListCreateAPIView.as_view(), name="categories-list-create"),
+    path('categories/<int:pk>/', ProductRetrieveUpdateDestroyAPIView.as_view(), name="retrieve-update-destroy")
 ]
