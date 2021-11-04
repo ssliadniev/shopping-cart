@@ -1,0 +1,38 @@
+[
+  {
+    "pk": 1,
+    "model": "user.user",
+    "fields": {
+      "password": "pbkdf2_sha256$260000$HL4buv3S4LcO7LoaFAkgzH$Pq8upJRJBoKyiZH2sVKvI+g9Yj2HuI0EchBFr1Ay8sw=",
+      "last_login": "2019-06-08",
+      "is_superuser": "True",
+      "username": "admin",
+      "first_name": "Admin_name",
+      "last_name": "Admin_surname",
+      "email": "admin@gmail.com",
+      "is_staff": "True",
+      "is_active": "True",
+      "date_joined": "2017-04-10",
+      "phone": "380687204654",
+      "address": "Kryvyi Rih city Pushkinskaya street 5"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "user.user",
+    "fields": {
+      "password": "bewhe32kdf2_sha256$260000weuhfL4buv3S4LcO7LoaFAkgkioweur823kll3pd-9Yj2HuI0EchBF234p2k",
+      "last_login": "2020-03-10",
+      "is_superuser": "False",
+      "username": "user",
+      "first_name": "user_name",
+      "last_name": "user_surname",
+      "email": "user@gmail.com",
+      "is_staff": "False",
+      "is_active": "True",
+      "date_joined": "2018-05-10",
+      "phone": "380687579424",
+      "address": "Kharkiv city Cherkasova street 10"
+    }
+  }
+]
