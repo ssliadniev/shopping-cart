@@ -7,19 +7,17 @@ from products.models import Product, Category
 class ProductAdmin(admin.ModelAdmin):
 
     list_display = ("title", "category", "available", "in_stock")
-    list_filter = ["category"]
+    list_filter = ["category", "available"]
     search_fields = (
         "title",
-        "category",
-        "in_stock"
+        "category__title",
     )
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
 
-    list_display = ("title", "created_at", "updated_at")
-    list_filter = ["title"]
+    list_display = ("title",)
     search_fields = (
         "title",
     )
