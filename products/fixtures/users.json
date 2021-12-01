@@ -1,38 +1,44 @@
 [
-  {
-    "pk": 1,
-    "model": "user.user",
-    "fields": {
-      "password": "pbkdf2_sha256$260000$HL4buv3S4LcO7LoaFAkgzH$Pq8upJRJBoKyiZH2sVKvI+g9Yj2HuI0EchBFr1Ay8sw=",
-      "last_login": "2019-06-08",
-      "is_superuser": "True",
-      "username": "admin",
-      "first_name": "Admin_name",
-      "last_name": "Admin_surname",
+{
+   "model": "user.user",
+   "pk": 1,
+   "fields": {
+      "password": "pbkdf2_sha256$260000$mff0jJDCzBY5dwiVU3Z3hq$vBd1yGxQXxteMFaAIS7zgPJbooo1yl1DuA9sc0Y7ZfQ=",
+      "last_login": "2021-11-29T08:31:00Z",
+      "is_superuser": true,
+      "username": "Admin",
+      "first_name": "admin_name",
+      "last_name": "admin_surname",
       "email": "admin@gmail.com",
-      "is_staff": "True",
-      "is_active": "True",
-      "date_joined": "2017-04-10",
-      "phone": "380687204654",
-      "address": "Kryvyi Rih city Pushkinskaya street 5"
-    }
-  },
-  {
-    "pk": 2,
-    "model": "user.user",
-    "fields": {
-      "password": "bewhe32kdf2_sha256$260000weuhfL4buv3S4LcO7LoaFAkgkioweur823kll3pd-9Yj2HuI0EchBF234p2k",
-      "last_login": "2020-03-10",
-      "is_superuser": "False",
-      "username": "user",
-      "first_name": "user_name",
-      "last_name": "user_surname",
-      "email": "user@gmail.com",
-      "is_staff": "False",
-      "is_active": "True",
-      "date_joined": "2018-05-10",
-      "phone": "380687579424",
-      "address": "Kharkiv city Cherkasova street 10"
-    }
-  }
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2021-11-29T08:31:00Z",
+      "phone": null,
+      "address": null,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+   }
+},
+{
+   "model": "user.user",
+   "pk": 2,
+   "fields": {
+      "password": "!QAZXSW@",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "some_user",
+      "first_name": "user name",
+      "last_name": "user surname",
+      "email": "some_user@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2021-11-28T19:58:03Z",
+      "phone": null,
+      "address": null,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+   }
+}
 ]
