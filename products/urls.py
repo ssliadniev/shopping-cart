@@ -5,6 +5,8 @@ from .views import (CategoryListCreateAPIView,
                     ProductListCreateAPIView,
                     ProductRetrieveUpdateDestroyAPIView)
 
+app_name = "product"
+
 urlpatterns = [
     path("", ProductListCreateAPIView.as_view(), name="list-create"),
     path(
