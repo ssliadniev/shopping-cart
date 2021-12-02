@@ -11,12 +11,12 @@ class CategorySerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ('pk', 'category', 'title', 'slug', 'description', 'price', 'available')
+        fields = ('pk', 'category', 'title', 'slug', 'description', 'price', 'in_stock', 'image')
 
     def to_representation(self, instance):
-        ret = super().to_representation(instance)
-        ret['category'] = {
+        representation = super().to_representation(instance)
+        representation["category"] = {
             "pk": instance.category.pk,
             "title": instance.category.title
         }
-        return ret
+        return representation
