@@ -16,6 +16,7 @@ class ProductFilters(django_filters.FilterSet):
     @staticmethod
     def filter_search(queryset, values, *args, **kwargs):
         values = values.split(" ") if values else []
+        print(values)
         for value in values:
             queryset = queryset.filter(
                 Q(title__icontains=value) |

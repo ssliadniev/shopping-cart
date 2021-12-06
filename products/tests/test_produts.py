@@ -72,6 +72,7 @@ class ProductsTestCase(TransactionTestCase):
             expected_data,
             "Response data not equal expected data.",
         )
+        self.assertEqual(response.data["count"], 4)
 
     def test_get_products_list_with_filter(self):
         expected_data = [
@@ -124,7 +125,7 @@ class ProductsTestCase(TransactionTestCase):
                 ]
             ),
         ]
-        url = f'{reverse("product:list-create")}?search='
+        url = f'{reverse("product:list-create")}?search=Product'
         response = self.client.get(url)
         self.assertEqual(
             response.data["results"],
@@ -191,11 +192,6 @@ class ProductsTestCase(TransactionTestCase):
         }
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, HTTP_403_FORBIDDEN)
-
-    def test_get_list_of_products(self):
-        response = self.client.get(reverse("product:list-create"))
-        self.assertEqual(response.status_code, HTTP_200_OK)
-        self.assertEqual(response.data["count"], 4)
 
     def test_update_product_anonymous(self):
         url = reverse("product:product-retrieve-update-destroy", kwargs={"pk": 3})
