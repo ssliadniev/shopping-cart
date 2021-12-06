@@ -28,6 +28,7 @@ class CategoriesTestCase(TransactionTestCase):
             expected_data,
             "Response data not equal expected data.",
         )
+        self.assertEqual(response.data["count"], 4)
 
     def test_category_list_with_filter(self):
         expected_data = [
@@ -51,10 +52,11 @@ class CategoriesTestCase(TransactionTestCase):
         user = User.objects.get(pk=1)
         self.client.force_login(user)
         url = reverse("product:category-list-create")
-        data = {"pk": 5, "title": "category_5", "slug": "categ5"}
+        data = {"title": "category_5", "slug": "categ5"}
         response = self.client.post(url, data, format="json")
         self.assertEqual(response.status_code, HTTP_201_CREATED)
-        self.assertEqual(response.data, data)
+        self.assertEqual(response.data["title"], data["title"])
+        self.assertEqual(response.data["slug"], data["slug"])
 
     def test_create_category_user(self):
         user = User.objects.get(pk=2)
@@ -63,11 +65,6 @@ class CategoriesTestCase(TransactionTestCase):
         data = {"title": "category_5", "slug": "categ5"}
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, HTTP_403_FORBIDDEN)
-
-    def test_get_list_of_category(self):
-        response = self.client.get(reverse("product:category-list-create"))
-        self.assertEqual(response.status_code, HTTP_200_OK)
-        self.assertEqual(response.data["count"], 4)
 
     def test_update_category_anonymous(self):
         url = reverse("product:category-retrieve-update-destroy", kwargs={"pk": 1})
