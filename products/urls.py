@@ -2,13 +2,19 @@ from django.urls import path
 
 from .views import (CategoryListCreateAPIView,
                     CategoryRetrieveUpdateDestroyAPIView,
-                    ProductListCreateAPIView,
-                    ProductRetrieveUpdateDestroyAPIView)
+                    ProductListAPIView,
+                    ProductRetrieveUpdateDestroyAPIView,
+                    AdminProductListCreateAPIView)
 
 app_name = "product"
 
 urlpatterns = [
-    path("", ProductListCreateAPIView.as_view(), name="list-create"),
+    path("", ProductListAPIView.as_view(), name="list"),
+    path(
+        "admin/",
+        AdminProductListCreateAPIView.as_view(),
+        name="admin-create-product",
+    ),
     path(
         "<int:pk>/",
         ProductRetrieveUpdateDestroyAPIView.as_view(),
