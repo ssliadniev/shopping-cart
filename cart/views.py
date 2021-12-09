@@ -1,18 +1,11 @@
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, UpdateAPIView, DestroyAPIView
 from cart.models import Cart, CartItem
-
-
-class CartListCreateAPIView(ListCreateAPIView):
-    queryset = Cart.objects.all()
-
-
-class CartRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
-    queryset = Cart.objects.all()
 
 
 class CartItemListCreateAPIView(ListCreateAPIView):
     queryset = CartItem.objects.all()
 
+    #total
 
-class CartItemRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+class CartItemUpdateDestroyAPIView(UpdateAPIView, DestroyAPIView):
     queryset = CartItem.objects.all()
