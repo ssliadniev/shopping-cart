@@ -1,10 +1,10 @@
 from django.db import models
-from user.models import User, Product
+from user.models import User
+from user.models import Product
 
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ('user',)
