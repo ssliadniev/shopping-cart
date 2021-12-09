@@ -5,6 +5,7 @@ from rest_framework.status import (
     HTTP_201_CREATED,
     HTTP_204_NO_CONTENT,
     HTTP_403_FORBIDDEN,
+    HTTP_405_METHOD_NOT_ALLOWED,
 )
 
 from products.models import Product
@@ -26,7 +27,7 @@ class ProductsTestCase(TransactionTestCase):
                     ("description", "Some description for product_1"),
                     ("price", "123.54"),
                     ("in_stock", 5),
-                    ('image', None),
+                    ("image", None),
                 ]
             ),
             OrderedDict(
@@ -38,7 +39,7 @@ class ProductsTestCase(TransactionTestCase):
                     ("description", "Some description for product_2"),
                     ("price", "54.13"),
                     ("in_stock", 2),
-                    ('image', None),
+                    ("image", None),
                 ]
             ),
             OrderedDict(
@@ -50,7 +51,7 @@ class ProductsTestCase(TransactionTestCase):
                     ("description", "Some description for product_3"),
                     ("price", "178.23"),
                     ("in_stock", 3),
-                    ('image', None),
+                    ("image", None),
                 ]
             ),
             OrderedDict(
@@ -62,11 +63,11 @@ class ProductsTestCase(TransactionTestCase):
                     ("description", "Some description for product_4"),
                     ("price", "89.43"),
                     ("in_stock", 0),
-                    ('image', None),
+                    ("image", None),
                 ]
             ),
         ]
-        response = self.client.get(reverse("product:list-create"))
+        response = self.client.get(reverse("product:list"))
         self.assertListEqual(
             response.data["results"],
             expected_data,
@@ -85,47 +86,11 @@ class ProductsTestCase(TransactionTestCase):
                     ("description", "Some description for product_1"),
                     ("price", "123.54"),
                     ("in_stock", 5),
-                    ('image', None),
+                    ("image", None),
                 ]
-            ),
-            OrderedDict(
-                [
-                    ("pk", 2),
-                    ("category", {"pk": 2, "title": "Category_2"}),
-                    ("title", "Product_2"),
-                    ("slug", "prod2"),
-                    ("description", "Some description for product_2"),
-                    ("price", "54.13"),
-                    ("in_stock", 2),
-                    ('image', None),
-                ]
-            ),
-            OrderedDict(
-                [
-                    ("pk", 3),
-                    ("category", {"pk": 3, "title": "Category_3"}),
-                    ("title", "Product_3"),
-                    ("slug", "prod3"),
-                    ("description", "Some description for product_3"),
-                    ("price", "178.23"),
-                    ("in_stock", 3),
-                    ('image', None),
-                ]
-            ),
-            OrderedDict(
-                [
-                    ("pk", 4),
-                    ("category", {"pk": 4, "title": "Category_4"}),
-                    ("title", "Product_4"),
-                    ("slug", "prod4"),
-                    ("description", "Some description for product_4"),
-                    ("price", "89.43"),
-                    ("in_stock", 0),
-                    ('image', None),
-                ]
-            ),
+            )
         ]
-        url = f'{reverse("product:list-create")}?search=Product'
+        url = f'{reverse("product:list")}?search=Product_1'
         response = self.client.get(url)
         self.assertEqual(
             response.data["results"],
@@ -134,9 +99,8 @@ class ProductsTestCase(TransactionTestCase):
         )
 
     def test_create_product_anonymous(self):
-        url = reverse("product:list-create")
+        url = reverse("product:list")
         data = {
-            "pk": 4,
             "category": 4,
             "title": "Product_5",
             "slug": "product5",
@@ -147,12 +111,12 @@ class ProductsTestCase(TransactionTestCase):
             "image": "",
         }
         response = self.client.post(url, data)
-        self.assertEqual(response.status_code, HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, HTTP_405_METHOD_NOT_ALLOWED)
 
     def test_create_product_admin(self):
         expected_data = {
             "pk": 5,
-            "category": {'pk': 4, 'title': 'Category_4'},
+            "category": {"pk": 4, "title": "Category_4"},
             "title": "Product_5",
             "slug": "product5",
             "description": "some description for product_5",
@@ -162,7 +126,7 @@ class ProductsTestCase(TransactionTestCase):
         }
         user = User.objects.get(pk=1)
         self.client.force_login(user)
-        url = reverse("product:list-create")
+        url = reverse("product:admin-create-product")
         data = {
             "category": 4,
             "title": "Product_5",
@@ -178,9 +142,8 @@ class ProductsTestCase(TransactionTestCase):
     def test_create_product_user(self):
         user = User.objects.get(pk=2)
         self.client.force_login(user)
-        url = reverse("product:list-create")
+        url = reverse("product:list")
         data = {
-            "pk": 4,
             "category": 4,
             "title": "Product_5",
             "slug": "product5",
@@ -191,7 +154,7 @@ class ProductsTestCase(TransactionTestCase):
             "image": "",
         }
         response = self.client.post(url, data)
-        self.assertEqual(response.status_code, HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, HTTP_405_METHOD_NOT_ALLOWED)
 
     def test_update_product_anonymous(self):
         url = reverse("product:product-retrieve-update-destroy", kwargs={"pk": 3})
@@ -247,7 +210,7 @@ class ProductsTestCase(TransactionTestCase):
             "slug": "prod3",
             "description": "Some description for product_3",
             "price": "421.54",
-            "in_stock": 10
+            "in_stock": 10,
         }
         response = self.client.patch(url, data, content_type="application/json")
         self.assertEqual(response.status_code, HTTP_200_OK)
