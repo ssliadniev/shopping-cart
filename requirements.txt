@@ -1,5 +1,5 @@
 Django==3.2
 djangorestframework==3.12.4
 invoke==1.6.0
-
+django_filter==2.4.0
 django-environ~=0.8.0
