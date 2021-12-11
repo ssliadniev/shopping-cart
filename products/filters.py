@@ -1,5 +1,6 @@
 import django_filters
 from django.db.models import Q
+
 from products.models import Product
 
 
@@ -24,7 +25,7 @@ class ProductFilters(django_filters.FilterSet):
         return queryset
 
     @staticmethod
-    def filter_in_stock(queryset, value, *args, **kwargs):
+    def filter_in_stock(queryset, name, value, *args, **kwargs):
         if value:
             return queryset.filter(in_stock__gt=0)
         return queryset.filter(in_stock=0)
