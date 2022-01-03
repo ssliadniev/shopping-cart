@@ -63,71 +63,15 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
---
--- Name: fuzzystrmatch; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS fuzzystrmatch WITH SCHEMA public;
-
-
---
--- Name: EXTENSION fuzzystrmatch; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION fuzzystrmatch IS 'determine similarities and distance between strings';
-
-
---
--- Name: postgis; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
-
-
---
--- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION postgis IS 'PostGIS geometry, geography, and raster spatial types and functions';
-
-
---
--- Name: postgis_tiger_geocoder; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS postgis_tiger_geocoder WITH SCHEMA tiger;
-
-
---
--- Name: EXTENSION postgis_tiger_geocoder; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION postgis_tiger_geocoder IS 'PostGIS tiger geocoder and reverse geocoder';
-
-
---
--- Name: postgis_topology; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS postgis_topology WITH SCHEMA topology;
-
-
---
--- Name: EXTENSION postgis_topology; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION postgis_topology IS 'PostGIS topology spatial types and functions';
-
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: account_emailaddress; Type: TABLE; Schema: public; Owner: shopping_cart
+-- Name: account_emailaddress; Type: TABLE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE TABLE public.account_emailaddress (
+CREATE TABLE tiger.account_emailaddress (
     id bigint NOT NULL,
     email character varying(254) NOT NULL,
     verified boolean NOT NULL,
@@ -136,13 +80,13 @@ CREATE TABLE public.account_emailaddress (
 );
 
 
-ALTER TABLE public.account_emailaddress OWNER TO shopping_cart;
+ALTER TABLE tiger.account_emailaddress OWNER TO shopping_cart;
 
 --
--- Name: account_emailaddress_id_seq; Type: SEQUENCE; Schema: public; Owner: shopping_cart
+-- Name: account_emailaddress_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE SEQUENCE public.account_emailaddress_id_seq
+CREATE SEQUENCE tiger.account_emailaddress_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -150,20 +94,20 @@ CREATE SEQUENCE public.account_emailaddress_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.account_emailaddress_id_seq OWNER TO shopping_cart;
+ALTER TABLE tiger.account_emailaddress_id_seq OWNER TO shopping_cart;
 
 --
--- Name: account_emailaddress_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: shopping_cart
+-- Name: account_emailaddress_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER SEQUENCE public.account_emailaddress_id_seq OWNED BY public.account_emailaddress.id;
+ALTER SEQUENCE tiger.account_emailaddress_id_seq OWNED BY tiger.account_emailaddress.id;
 
 
 --
--- Name: account_emailconfirmation; Type: TABLE; Schema: public; Owner: shopping_cart
+-- Name: account_emailconfirmation; Type: TABLE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE TABLE public.account_emailconfirmation (
+CREATE TABLE tiger.account_emailconfirmation (
     id bigint NOT NULL,
     created timestamp with time zone NOT NULL,
     sent timestamp with time zone,
@@ -172,13 +116,13 @@ CREATE TABLE public.account_emailconfirmation (
 );
 
 
-ALTER TABLE public.account_emailconfirmation OWNER TO shopping_cart;
+ALTER TABLE tiger.account_emailconfirmation OWNER TO shopping_cart;
 
 --
--- Name: account_emailconfirmation_id_seq; Type: SEQUENCE; Schema: public; Owner: shopping_cart
+-- Name: account_emailconfirmation_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE SEQUENCE public.account_emailconfirmation_id_seq
+CREATE SEQUENCE tiger.account_emailconfirmation_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -186,32 +130,32 @@ CREATE SEQUENCE public.account_emailconfirmation_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.account_emailconfirmation_id_seq OWNER TO shopping_cart;
+ALTER TABLE tiger.account_emailconfirmation_id_seq OWNER TO shopping_cart;
 
 --
--- Name: account_emailconfirmation_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: shopping_cart
+-- Name: account_emailconfirmation_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER SEQUENCE public.account_emailconfirmation_id_seq OWNED BY public.account_emailconfirmation.id;
+ALTER SEQUENCE tiger.account_emailconfirmation_id_seq OWNED BY tiger.account_emailconfirmation.id;
 
 
 --
--- Name: auth_group; Type: TABLE; Schema: public; Owner: shopping_cart
+-- Name: auth_group; Type: TABLE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE TABLE public.auth_group (
+CREATE TABLE tiger.auth_group (
     id integer NOT NULL,
     name character varying(150) NOT NULL
 );
 
 
-ALTER TABLE public.auth_group OWNER TO shopping_cart;
+ALTER TABLE tiger.auth_group OWNER TO shopping_cart;
 
 --
--- Name: auth_group_id_seq; Type: SEQUENCE; Schema: public; Owner: shopping_cart
+-- Name: auth_group_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE SEQUENCE public.auth_group_id_seq
+CREATE SEQUENCE tiger.auth_group_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -219,33 +163,33 @@ CREATE SEQUENCE public.auth_group_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.auth_group_id_seq OWNER TO shopping_cart;
+ALTER TABLE tiger.auth_group_id_seq OWNER TO shopping_cart;
 
 --
--- Name: auth_group_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: shopping_cart
+-- Name: auth_group_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER SEQUENCE public.auth_group_id_seq OWNED BY public.auth_group.id;
+ALTER SEQUENCE tiger.auth_group_id_seq OWNED BY tiger.auth_group.id;
 
 
 --
--- Name: auth_group_permissions; Type: TABLE; Schema: public; Owner: shopping_cart
+-- Name: auth_group_permissions; Type: TABLE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE TABLE public.auth_group_permissions (
+CREATE TABLE tiger.auth_group_permissions (
     id bigint NOT NULL,
     group_id integer NOT NULL,
     permission_id integer NOT NULL
 );
 
 
-ALTER TABLE public.auth_group_permissions OWNER TO shopping_cart;
+ALTER TABLE tiger.auth_group_permissions OWNER TO shopping_cart;
 
 --
--- Name: auth_group_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: shopping_cart
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE SEQUENCE public.auth_group_permissions_id_seq
+CREATE SEQUENCE tiger.auth_group_permissions_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -253,20 +197,20 @@ CREATE SEQUENCE public.auth_group_permissions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.auth_group_permissions_id_seq OWNER TO shopping_cart;
+ALTER TABLE tiger.auth_group_permissions_id_seq OWNER TO shopping_cart;
 
 --
--- Name: auth_group_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: shopping_cart
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER SEQUENCE public.auth_group_permissions_id_seq OWNED BY public.auth_group_permissions.id;
+ALTER SEQUENCE tiger.auth_group_permissions_id_seq OWNED BY tiger.auth_group_permissions.id;
 
 
 --
--- Name: auth_permission; Type: TABLE; Schema: public; Owner: shopping_cart
+-- Name: auth_permission; Type: TABLE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE TABLE public.auth_permission (
+CREATE TABLE tiger.auth_permission (
     id integer NOT NULL,
     name character varying(255) NOT NULL,
     content_type_id integer NOT NULL,
@@ -274,13 +218,13 @@ CREATE TABLE public.auth_permission (
 );
 
 
-ALTER TABLE public.auth_permission OWNER TO shopping_cart;
+ALTER TABLE tiger.auth_permission OWNER TO shopping_cart;
 
 --
--- Name: auth_permission_id_seq; Type: SEQUENCE; Schema: public; Owner: shopping_cart
+-- Name: auth_permission_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE SEQUENCE public.auth_permission_id_seq
+CREATE SEQUENCE tiger.auth_permission_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -288,33 +232,102 @@ CREATE SEQUENCE public.auth_permission_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.auth_permission_id_seq OWNER TO shopping_cart;
+ALTER TABLE tiger.auth_permission_id_seq OWNER TO shopping_cart;
 
 --
--- Name: auth_permission_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: shopping_cart
+-- Name: auth_permission_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER SEQUENCE public.auth_permission_id_seq OWNED BY public.auth_permission.id;
+ALTER SEQUENCE tiger.auth_permission_id_seq OWNED BY tiger.auth_permission.id;
 
 
 --
--- Name: authtoken_token; Type: TABLE; Schema: public; Owner: shopping_cart
+-- Name: authtoken_token; Type: TABLE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE TABLE public.authtoken_token (
+CREATE TABLE tiger.authtoken_token (
     key character varying(40) NOT NULL,
     created timestamp with time zone NOT NULL,
     user_id bigint NOT NULL
 );
 
 
-ALTER TABLE public.authtoken_token OWNER TO shopping_cart;
+ALTER TABLE tiger.authtoken_token OWNER TO shopping_cart;
 
 --
--- Name: django_admin_log; Type: TABLE; Schema: public; Owner: shopping_cart
+-- Name: cart_cart; Type: TABLE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE TABLE public.django_admin_log (
+CREATE TABLE tiger.cart_cart (
+    id bigint NOT NULL,
+    user_id bigint NOT NULL
+);
+
+
+ALTER TABLE tiger.cart_cart OWNER TO shopping_cart;
+
+--
+-- Name: cart_cart_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE SEQUENCE tiger.cart_cart_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tiger.cart_cart_id_seq OWNER TO shopping_cart;
+
+--
+-- Name: cart_cart_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER SEQUENCE tiger.cart_cart_id_seq OWNED BY tiger.cart_cart.id;
+
+
+--
+-- Name: cart_cartitem; Type: TABLE; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE TABLE tiger.cart_cartitem (
+    id bigint NOT NULL,
+    quantity integer NOT NULL,
+    cart_id bigint NOT NULL,
+    product_id bigint NOT NULL,
+    CONSTRAINT cart_cartitem_quantity_check CHECK ((quantity >= 0))
+);
+
+
+ALTER TABLE tiger.cart_cartitem OWNER TO shopping_cart;
+
+--
+-- Name: cart_cartitem_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE SEQUENCE tiger.cart_cartitem_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tiger.cart_cartitem_id_seq OWNER TO shopping_cart;
+
+--
+-- Name: cart_cartitem_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER SEQUENCE tiger.cart_cartitem_id_seq OWNED BY tiger.cart_cartitem.id;
+
+
+--
+-- Name: django_admin_log; Type: TABLE; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE TABLE tiger.django_admin_log (
     id integer NOT NULL,
     action_time timestamp with time zone NOT NULL,
     object_id text,
@@ -327,13 +340,13 @@ CREATE TABLE public.django_admin_log (
 );
 
 
-ALTER TABLE public.django_admin_log OWNER TO shopping_cart;
+ALTER TABLE tiger.django_admin_log OWNER TO shopping_cart;
 
 --
--- Name: django_admin_log_id_seq; Type: SEQUENCE; Schema: public; Owner: shopping_cart
+-- Name: django_admin_log_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE SEQUENCE public.django_admin_log_id_seq
+CREATE SEQUENCE tiger.django_admin_log_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -341,33 +354,33 @@ CREATE SEQUENCE public.django_admin_log_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.django_admin_log_id_seq OWNER TO shopping_cart;
+ALTER TABLE tiger.django_admin_log_id_seq OWNER TO shopping_cart;
 
 --
--- Name: django_admin_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: shopping_cart
+-- Name: django_admin_log_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER SEQUENCE public.django_admin_log_id_seq OWNED BY public.django_admin_log.id;
+ALTER SEQUENCE tiger.django_admin_log_id_seq OWNED BY tiger.django_admin_log.id;
 
 
 --
--- Name: django_content_type; Type: TABLE; Schema: public; Owner: shopping_cart
+-- Name: django_content_type; Type: TABLE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE TABLE public.django_content_type (
+CREATE TABLE tiger.django_content_type (
     id integer NOT NULL,
     app_label character varying(100) NOT NULL,
     model character varying(100) NOT NULL
 );
 
 
-ALTER TABLE public.django_content_type OWNER TO shopping_cart;
+ALTER TABLE tiger.django_content_type OWNER TO shopping_cart;
 
 --
--- Name: django_content_type_id_seq; Type: SEQUENCE; Schema: public; Owner: shopping_cart
+-- Name: django_content_type_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE SEQUENCE public.django_content_type_id_seq
+CREATE SEQUENCE tiger.django_content_type_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -375,20 +388,20 @@ CREATE SEQUENCE public.django_content_type_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.django_content_type_id_seq OWNER TO shopping_cart;
+ALTER TABLE tiger.django_content_type_id_seq OWNER TO shopping_cart;
 
 --
--- Name: django_content_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: shopping_cart
+-- Name: django_content_type_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER SEQUENCE public.django_content_type_id_seq OWNED BY public.django_content_type.id;
+ALTER SEQUENCE tiger.django_content_type_id_seq OWNED BY tiger.django_content_type.id;
 
 
 --
--- Name: django_migrations; Type: TABLE; Schema: public; Owner: shopping_cart
+-- Name: django_migrations; Type: TABLE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE TABLE public.django_migrations (
+CREATE TABLE tiger.django_migrations (
     id bigint NOT NULL,
     app character varying(255) NOT NULL,
     name character varying(255) NOT NULL,
@@ -396,13 +409,13 @@ CREATE TABLE public.django_migrations (
 );
 
 
-ALTER TABLE public.django_migrations OWNER TO shopping_cart;
+ALTER TABLE tiger.django_migrations OWNER TO shopping_cart;
 
 --
--- Name: django_migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: shopping_cart
+-- Name: django_migrations_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE SEQUENCE public.django_migrations_id_seq
+CREATE SEQUENCE tiger.django_migrations_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -410,46 +423,46 @@ CREATE SEQUENCE public.django_migrations_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.django_migrations_id_seq OWNER TO shopping_cart;
+ALTER TABLE tiger.django_migrations_id_seq OWNER TO shopping_cart;
 
 --
--- Name: django_migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: shopping_cart
+-- Name: django_migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER SEQUENCE public.django_migrations_id_seq OWNED BY public.django_migrations.id;
+ALTER SEQUENCE tiger.django_migrations_id_seq OWNED BY tiger.django_migrations.id;
 
 
 --
--- Name: django_session; Type: TABLE; Schema: public; Owner: shopping_cart
+-- Name: django_session; Type: TABLE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE TABLE public.django_session (
+CREATE TABLE tiger.django_session (
     session_key character varying(40) NOT NULL,
     session_data text NOT NULL,
     expire_date timestamp with time zone NOT NULL
 );
 
 
-ALTER TABLE public.django_session OWNER TO shopping_cart;
+ALTER TABLE tiger.django_session OWNER TO shopping_cart;
 
 --
--- Name: django_site; Type: TABLE; Schema: public; Owner: shopping_cart
+-- Name: django_site; Type: TABLE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE TABLE public.django_site (
+CREATE TABLE tiger.django_site (
     id integer NOT NULL,
     domain character varying(100) NOT NULL,
     name character varying(50) NOT NULL
 );
 
 
-ALTER TABLE public.django_site OWNER TO shopping_cart;
+ALTER TABLE tiger.django_site OWNER TO shopping_cart;
 
 --
--- Name: django_site_id_seq; Type: SEQUENCE; Schema: public; Owner: shopping_cart
+-- Name: django_site_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE SEQUENCE public.django_site_id_seq
+CREATE SEQUENCE tiger.django_site_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -457,20 +470,97 @@ CREATE SEQUENCE public.django_site_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.django_site_id_seq OWNER TO shopping_cart;
+ALTER TABLE tiger.django_site_id_seq OWNER TO shopping_cart;
 
 --
--- Name: django_site_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: shopping_cart
+-- Name: django_site_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER SEQUENCE public.django_site_id_seq OWNED BY public.django_site.id;
+ALTER SEQUENCE tiger.django_site_id_seq OWNED BY tiger.django_site.id;
 
 
 --
--- Name: user_user; Type: TABLE; Schema: public; Owner: shopping_cart
+-- Name: products_category; Type: TABLE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE TABLE public.user_user (
+CREATE TABLE tiger.products_category (
+    id bigint NOT NULL,
+    title character varying(150) NOT NULL,
+    slug character varying(150) NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE tiger.products_category OWNER TO shopping_cart;
+
+--
+-- Name: products_category_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE SEQUENCE tiger.products_category_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tiger.products_category_id_seq OWNER TO shopping_cart;
+
+--
+-- Name: products_category_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER SEQUENCE tiger.products_category_id_seq OWNED BY tiger.products_category.id;
+
+
+--
+-- Name: products_product; Type: TABLE; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE TABLE tiger.products_product (
+    id bigint NOT NULL,
+    title character varying(100) NOT NULL,
+    slug character varying(100) NOT NULL,
+    description text NOT NULL,
+    price numeric(10,2) NOT NULL,
+    available boolean NOT NULL,
+    in_stock integer NOT NULL,
+    image character varying(100) NOT NULL,
+    category_id bigint NOT NULL,
+    CONSTRAINT products_product_in_stock_check CHECK ((in_stock >= 0))
+);
+
+
+ALTER TABLE tiger.products_product OWNER TO shopping_cart;
+
+--
+-- Name: products_product_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE SEQUENCE tiger.products_product_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tiger.products_product_id_seq OWNER TO shopping_cart;
+
+--
+-- Name: products_product_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER SEQUENCE tiger.products_product_id_seq OWNED BY tiger.products_product.id;
+
+
+--
+-- Name: user_user; Type: TABLE; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE TABLE tiger.user_user (
     id bigint NOT NULL,
     password character varying(128) NOT NULL,
     last_login timestamp with time zone,
@@ -488,26 +578,26 @@ CREATE TABLE public.user_user (
 );
 
 
-ALTER TABLE public.user_user OWNER TO shopping_cart;
+ALTER TABLE tiger.user_user OWNER TO shopping_cart;
 
 --
--- Name: user_user_groups; Type: TABLE; Schema: public; Owner: shopping_cart
+-- Name: user_user_groups; Type: TABLE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE TABLE public.user_user_groups (
+CREATE TABLE tiger.user_user_groups (
     id bigint NOT NULL,
     user_id bigint NOT NULL,
     group_id integer NOT NULL
 );
 
 
-ALTER TABLE public.user_user_groups OWNER TO shopping_cart;
+ALTER TABLE tiger.user_user_groups OWNER TO shopping_cart;
 
 --
--- Name: user_user_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: shopping_cart
+-- Name: user_user_groups_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE SEQUENCE public.user_user_groups_id_seq
+CREATE SEQUENCE tiger.user_user_groups_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -515,20 +605,20 @@ CREATE SEQUENCE public.user_user_groups_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.user_user_groups_id_seq OWNER TO shopping_cart;
+ALTER TABLE tiger.user_user_groups_id_seq OWNER TO shopping_cart;
 
 --
--- Name: user_user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: shopping_cart
+-- Name: user_user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER SEQUENCE public.user_user_groups_id_seq OWNED BY public.user_user_groups.id;
+ALTER SEQUENCE tiger.user_user_groups_id_seq OWNED BY tiger.user_user_groups.id;
 
 
 --
--- Name: user_user_id_seq; Type: SEQUENCE; Schema: public; Owner: shopping_cart
+-- Name: user_user_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE SEQUENCE public.user_user_id_seq
+CREATE SEQUENCE tiger.user_user_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -536,33 +626,33 @@ CREATE SEQUENCE public.user_user_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.user_user_id_seq OWNER TO shopping_cart;
+ALTER TABLE tiger.user_user_id_seq OWNER TO shopping_cart;
 
 --
--- Name: user_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: shopping_cart
+-- Name: user_user_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER SEQUENCE public.user_user_id_seq OWNED BY public.user_user.id;
+ALTER SEQUENCE tiger.user_user_id_seq OWNED BY tiger.user_user.id;
 
 
 --
--- Name: user_user_user_permissions; Type: TABLE; Schema: public; Owner: shopping_cart
+-- Name: user_user_user_permissions; Type: TABLE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE TABLE public.user_user_user_permissions (
+CREATE TABLE tiger.user_user_user_permissions (
     id bigint NOT NULL,
     user_id bigint NOT NULL,
     permission_id integer NOT NULL
 );
 
 
-ALTER TABLE public.user_user_user_permissions OWNER TO shopping_cart;
+ALTER TABLE tiger.user_user_user_permissions OWNER TO shopping_cart;
 
 --
--- Name: user_user_user_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: shopping_cart
+-- Name: user_user_user_permissions_id_seq; Type: SEQUENCE; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE SEQUENCE public.user_user_user_permissions_id_seq
+CREATE SEQUENCE tiger.user_user_user_permissions_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -570,164 +660,192 @@ CREATE SEQUENCE public.user_user_user_permissions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.user_user_user_permissions_id_seq OWNER TO shopping_cart;
+ALTER TABLE tiger.user_user_user_permissions_id_seq OWNER TO shopping_cart;
 
 --
--- Name: user_user_user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: shopping_cart
+-- Name: user_user_user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER SEQUENCE public.user_user_user_permissions_id_seq OWNED BY public.user_user_user_permissions.id;
-
-
---
--- Name: account_emailaddress id; Type: DEFAULT; Schema: public; Owner: shopping_cart
---
-
-ALTER TABLE ONLY public.account_emailaddress ALTER COLUMN id SET DEFAULT nextval('public.account_emailaddress_id_seq'::regclass);
+ALTER SEQUENCE tiger.user_user_user_permissions_id_seq OWNED BY tiger.user_user_user_permissions.id;
 
 
 --
--- Name: account_emailconfirmation id; Type: DEFAULT; Schema: public; Owner: shopping_cart
+-- Name: account_emailaddress id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.account_emailconfirmation ALTER COLUMN id SET DEFAULT nextval('public.account_emailconfirmation_id_seq'::regclass);
-
-
---
--- Name: auth_group id; Type: DEFAULT; Schema: public; Owner: shopping_cart
---
-
-ALTER TABLE ONLY public.auth_group ALTER COLUMN id SET DEFAULT nextval('public.auth_group_id_seq'::regclass);
+ALTER TABLE ONLY tiger.account_emailaddress ALTER COLUMN id SET DEFAULT nextval('tiger.account_emailaddress_id_seq'::regclass);
 
 
 --
--- Name: auth_group_permissions id; Type: DEFAULT; Schema: public; Owner: shopping_cart
+-- Name: account_emailconfirmation id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.auth_group_permissions ALTER COLUMN id SET DEFAULT nextval('public.auth_group_permissions_id_seq'::regclass);
-
-
---
--- Name: auth_permission id; Type: DEFAULT; Schema: public; Owner: shopping_cart
---
-
-ALTER TABLE ONLY public.auth_permission ALTER COLUMN id SET DEFAULT nextval('public.auth_permission_id_seq'::regclass);
+ALTER TABLE ONLY tiger.account_emailconfirmation ALTER COLUMN id SET DEFAULT nextval('tiger.account_emailconfirmation_id_seq'::regclass);
 
 
 --
--- Name: django_admin_log id; Type: DEFAULT; Schema: public; Owner: shopping_cart
+-- Name: auth_group id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.django_admin_log ALTER COLUMN id SET DEFAULT nextval('public.django_admin_log_id_seq'::regclass);
-
-
---
--- Name: django_content_type id; Type: DEFAULT; Schema: public; Owner: shopping_cart
---
-
-ALTER TABLE ONLY public.django_content_type ALTER COLUMN id SET DEFAULT nextval('public.django_content_type_id_seq'::regclass);
+ALTER TABLE ONLY tiger.auth_group ALTER COLUMN id SET DEFAULT nextval('tiger.auth_group_id_seq'::regclass);
 
 
 --
--- Name: django_migrations id; Type: DEFAULT; Schema: public; Owner: shopping_cart
+-- Name: auth_group_permissions id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.django_migrations ALTER COLUMN id SET DEFAULT nextval('public.django_migrations_id_seq'::regclass);
-
-
---
--- Name: django_site id; Type: DEFAULT; Schema: public; Owner: shopping_cart
---
-
-ALTER TABLE ONLY public.django_site ALTER COLUMN id SET DEFAULT nextval('public.django_site_id_seq'::regclass);
+ALTER TABLE ONLY tiger.auth_group_permissions ALTER COLUMN id SET DEFAULT nextval('tiger.auth_group_permissions_id_seq'::regclass);
 
 
 --
--- Name: user_user id; Type: DEFAULT; Schema: public; Owner: shopping_cart
+-- Name: auth_permission id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.user_user ALTER COLUMN id SET DEFAULT nextval('public.user_user_id_seq'::regclass);
-
-
---
--- Name: user_user_groups id; Type: DEFAULT; Schema: public; Owner: shopping_cart
---
-
-ALTER TABLE ONLY public.user_user_groups ALTER COLUMN id SET DEFAULT nextval('public.user_user_groups_id_seq'::regclass);
+ALTER TABLE ONLY tiger.auth_permission ALTER COLUMN id SET DEFAULT nextval('tiger.auth_permission_id_seq'::regclass);
 
 
 --
--- Name: user_user_user_permissions id; Type: DEFAULT; Schema: public; Owner: shopping_cart
+-- Name: cart_cart id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.user_user_user_permissions ALTER COLUMN id SET DEFAULT nextval('public.user_user_user_permissions_id_seq'::regclass);
+ALTER TABLE ONLY tiger.cart_cart ALTER COLUMN id SET DEFAULT nextval('tiger.cart_cart_id_seq'::regclass);
 
 
 --
--- Data for Name: account_emailaddress; Type: TABLE DATA; Schema: public; Owner: shopping_cart
+-- Name: cart_cartitem id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
 --
 
-COPY public.account_emailaddress (id, email, verified, "primary", user_id) FROM stdin;
+ALTER TABLE ONLY tiger.cart_cartitem ALTER COLUMN id SET DEFAULT nextval('tiger.cart_cartitem_id_seq'::regclass);
+
+
+--
+-- Name: django_admin_log id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.django_admin_log ALTER COLUMN id SET DEFAULT nextval('tiger.django_admin_log_id_seq'::regclass);
+
+
+--
+-- Name: django_content_type id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.django_content_type ALTER COLUMN id SET DEFAULT nextval('tiger.django_content_type_id_seq'::regclass);
+
+
+--
+-- Name: django_migrations id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.django_migrations ALTER COLUMN id SET DEFAULT nextval('tiger.django_migrations_id_seq'::regclass);
+
+
+--
+-- Name: django_site id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.django_site ALTER COLUMN id SET DEFAULT nextval('tiger.django_site_id_seq'::regclass);
+
+
+--
+-- Name: products_category id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.products_category ALTER COLUMN id SET DEFAULT nextval('tiger.products_category_id_seq'::regclass);
+
+
+--
+-- Name: products_product id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.products_product ALTER COLUMN id SET DEFAULT nextval('tiger.products_product_id_seq'::regclass);
+
+
+--
+-- Name: user_user id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.user_user ALTER COLUMN id SET DEFAULT nextval('tiger.user_user_id_seq'::regclass);
+
+
+--
+-- Name: user_user_groups id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.user_user_groups ALTER COLUMN id SET DEFAULT nextval('tiger.user_user_groups_id_seq'::regclass);
+
+
+--
+-- Name: user_user_user_permissions id; Type: DEFAULT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.user_user_user_permissions ALTER COLUMN id SET DEFAULT nextval('tiger.user_user_user_permissions_id_seq'::regclass);
+
+
+--
+-- Data for Name: account_emailaddress; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
+--
+
+COPY tiger.account_emailaddress (id, email, verified, "primary", user_id) FROM stdin;
 \.
 
 
 --
--- Name: account_emailaddress_id_seq; Type: SEQUENCE SET; Schema: public; Owner: shopping_cart
+-- Name: account_emailaddress_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
 --
 
-SELECT pg_catalog.setval('public.account_emailaddress_id_seq', 1, false);
+SELECT pg_catalog.setval('tiger.account_emailaddress_id_seq', 1, false);
 
 
 --
--- Data for Name: account_emailconfirmation; Type: TABLE DATA; Schema: public; Owner: shopping_cart
+-- Data for Name: account_emailconfirmation; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
 --
 
-COPY public.account_emailconfirmation (id, created, sent, key, email_address_id) FROM stdin;
+COPY tiger.account_emailconfirmation (id, created, sent, key, email_address_id) FROM stdin;
 \.
 
 
 --
--- Name: account_emailconfirmation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: shopping_cart
+-- Name: account_emailconfirmation_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
 --
 
-SELECT pg_catalog.setval('public.account_emailconfirmation_id_seq', 1, false);
+SELECT pg_catalog.setval('tiger.account_emailconfirmation_id_seq', 1, false);
 
 
 --
--- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: shopping_cart
+-- Data for Name: auth_group; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
 --
 
-COPY public.auth_group (id, name) FROM stdin;
+COPY tiger.auth_group (id, name) FROM stdin;
 \.
 
 
 --
--- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: shopping_cart
+-- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
 --
 
-SELECT pg_catalog.setval('public.auth_group_id_seq', 1, false);
+SELECT pg_catalog.setval('tiger.auth_group_id_seq', 1, false);
 
 
 --
--- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: shopping_cart
+-- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
 --
 
-COPY public.auth_group_permissions (id, group_id, permission_id) FROM stdin;
+COPY tiger.auth_group_permissions (id, group_id, permission_id) FROM stdin;
 \.
 
 
 --
--- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: shopping_cart
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
 --
 
-SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 1, false);
+SELECT pg_catalog.setval('tiger.auth_group_permissions_id_seq', 1, false);
 
 
 --
--- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: shopping_cart
+-- Data for Name: auth_permission; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
 --
 
-COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
+COPY tiger.auth_permission (id, name, content_type_id, codename) FROM stdin;
 1	Can add log entry	1	add_logentry
 2	Can change log entry	1	change_logentry
 3	Can delete log entry	1	delete_logentry
@@ -748,18 +866,18 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 18	Can change session	5	change_session
 19	Can delete session	5	delete_session
 20	Can view session	5	view_session
-21	Can add Token	6	add_token
-22	Can change Token	6	change_token
-23	Can delete Token	6	delete_token
-24	Can view Token	6	view_token
-25	Can add token	7	add_tokenproxy
-26	Can change token	7	change_tokenproxy
-27	Can delete token	7	delete_tokenproxy
-28	Can view token	7	view_tokenproxy
-29	Can add site	8	add_site
-30	Can change site	8	change_site
-31	Can delete site	8	delete_site
-32	Can view site	8	view_site
+21	Can add site	6	add_site
+22	Can change site	6	change_site
+23	Can delete site	6	delete_site
+24	Can view site	6	view_site
+25	Can add Token	7	add_token
+26	Can change Token	7	change_token
+27	Can delete Token	7	delete_token
+28	Can view Token	7	view_token
+29	Can add token	8	add_tokenproxy
+30	Can change token	8	change_tokenproxy
+31	Can delete token	8	delete_tokenproxy
+32	Can view token	8	view_tokenproxy
 33	Can add social application	9	add_socialapp
 34	Can change social application	9	change_socialapp
 35	Can delete social application	9	delete_socialapp
@@ -784,662 +902,840 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 54	Can change user	14	change_user
 55	Can delete user	14	delete_user
 56	Can view user	14	view_user
+57	Can add category	15	add_category
+58	Can change category	15	change_category
+59	Can delete category	15	delete_category
+60	Can view category	15	view_category
+61	Can add product	16	add_product
+62	Can change product	16	change_product
+63	Can delete product	16	delete_product
+64	Can view product	16	view_product
+65	Can add cart	17	add_cart
+66	Can change cart	17	change_cart
+67	Can delete cart	17	delete_cart
+68	Can view cart	17	view_cart
+69	Can add item	18	add_cartitem
+70	Can change item	18	change_cartitem
+71	Can delete item	18	delete_cartitem
+72	Can view item	18	view_cartitem
 \.
 
 
 --
--- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: shopping_cart
+-- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
 --
 
-SELECT pg_catalog.setval('public.auth_permission_id_seq', 56, true);
+SELECT pg_catalog.setval('tiger.auth_permission_id_seq', 72, true);
 
 
 --
--- Data for Name: authtoken_token; Type: TABLE DATA; Schema: public; Owner: shopping_cart
+-- Data for Name: authtoken_token; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
 --
 
-COPY public.authtoken_token (key, created, user_id) FROM stdin;
+COPY tiger.authtoken_token (key, created, user_id) FROM stdin;
 \.
 
 
 --
--- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: shopping_cart
+-- Data for Name: cart_cart; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
 --
 
-COPY public.django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
+COPY tiger.cart_cart (id, user_id) FROM stdin;
 \.
 
 
 --
--- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: shopping_cart
+-- Name: cart_cart_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 1, false);
+SELECT pg_catalog.setval('tiger.cart_cart_id_seq', 1, false);
 
 
 --
--- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: shopping_cart
+-- Data for Name: cart_cartitem; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
 --
 
-COPY public.django_content_type (id, app_label, model) FROM stdin;
+COPY tiger.cart_cartitem (id, quantity, cart_id, product_id) FROM stdin;
+\.
+
+
+--
+-- Name: cart_cartitem_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
+--
+
+SELECT pg_catalog.setval('tiger.cart_cartitem_id_seq', 1, false);
+
+
+--
+-- Data for Name: django_admin_log; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
+--
+
+COPY tiger.django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
+\.
+
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
+--
+
+SELECT pg_catalog.setval('tiger.django_admin_log_id_seq', 1, false);
+
+
+--
+-- Data for Name: django_content_type; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
+--
+
+COPY tiger.django_content_type (id, app_label, model) FROM stdin;
 1	admin	logentry
 2	auth	permission
 3	auth	group
 4	contenttypes	contenttype
 5	sessions	session
-6	authtoken	token
-7	authtoken	tokenproxy
-8	sites	site
+6	sites	site
+7	authtoken	token
+8	authtoken	tokenproxy
 9	allauth	socialapp
 10	allauth	socialaccount
 11	allauth	socialtoken
 12	account	emailaddress
 13	account	emailconfirmation
 14	user	user
+15	products	category
+16	products	product
+17	cart	cart
+18	cart	cartitem
 \.
 
 
 --
--- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: shopping_cart
+-- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
 --
 
-SELECT pg_catalog.setval('public.django_content_type_id_seq', 14, true);
+SELECT pg_catalog.setval('tiger.django_content_type_id_seq', 18, true);
 
 
 --
--- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: shopping_cart
+-- Data for Name: django_migrations; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
 --
 
-COPY public.django_migrations (id, app, name, applied) FROM stdin;
-1	contenttypes	0001_initial	2021-10-03 19:40:36.709578+00
-2	contenttypes	0002_remove_content_type_name	2021-10-03 19:40:36.72486+00
-3	auth	0001_initial	2021-10-03 19:40:36.778571+00
-4	auth	0002_alter_permission_name_max_length	2021-10-03 19:40:36.802949+00
-5	auth	0003_alter_user_email_max_length	2021-10-03 19:40:36.83199+00
-6	auth	0004_alter_user_username_opts	2021-10-03 19:40:36.850829+00
-7	auth	0005_alter_user_last_login_null	2021-10-03 19:40:36.871497+00
-8	auth	0006_require_contenttypes_0002	2021-10-03 19:40:36.875214+00
-9	auth	0007_alter_validators_add_error_messages	2021-10-03 19:40:36.889733+00
-10	auth	0008_alter_user_username_max_length	2021-10-03 19:40:36.903073+00
-11	auth	0009_alter_user_last_name_max_length	2021-10-03 19:40:36.917269+00
-12	auth	0010_alter_group_name_max_length	2021-10-03 19:40:36.933938+00
-13	auth	0011_update_proxy_permissions	2021-10-03 19:40:36.948695+00
-14	auth	0012_alter_user_first_name_max_length	2021-10-03 19:40:36.961058+00
-15	user	0001_initial	2021-10-03 19:40:37.015204+00
-16	account	0001_initial	2021-10-03 19:40:37.068692+00
-17	account	0002_email_max_length	2021-10-03 19:40:37.079168+00
-18	account	0003_auto_20211003_1940	2021-10-03 19:40:37.139074+00
-19	admin	0001_initial	2021-10-03 19:40:37.164849+00
-20	admin	0002_logentry_remove_auto_add	2021-10-03 19:40:37.176055+00
-21	admin	0003_logentry_add_action_flag_choices	2021-10-03 19:40:37.187322+00
-22	authtoken	0001_initial	2021-10-03 19:40:37.208611+00
-23	authtoken	0002_auto_20160226_1747	2021-10-03 19:40:37.246414+00
-24	authtoken	0003_tokenproxy	2021-10-03 19:40:37.250791+00
-25	sessions	0001_initial	2021-10-03 19:40:37.266371+00
-26	sites	0001_initial	2021-10-03 19:40:37.27422+00
-27	sites	0002_alter_domain_unique	2021-10-03 19:40:37.285315+00
+COPY tiger.django_migrations (id, app, name, applied) FROM stdin;
+1	contenttypes	0001_initial	2021-12-14 11:20:35.887439+00
+2	contenttypes	0002_remove_content_type_name	2021-12-14 11:20:35.900352+00
+3	auth	0001_initial	2021-12-14 11:20:35.966938+00
+4	auth	0002_alter_permission_name_max_length	2021-12-14 11:20:35.987634+00
+5	auth	0003_alter_user_email_max_length	2021-12-14 11:20:36.000802+00
+6	auth	0004_alter_user_username_opts	2021-12-14 11:20:36.008654+00
+7	auth	0005_alter_user_last_login_null	2021-12-14 11:20:36.016228+00
+8	auth	0006_require_contenttypes_0002	2021-12-14 11:20:36.018694+00
+9	auth	0007_alter_validators_add_error_messages	2021-12-14 11:20:36.025863+00
+10	auth	0008_alter_user_username_max_length	2021-12-14 11:20:36.033312+00
+11	auth	0009_alter_user_last_name_max_length	2021-12-14 11:20:36.040502+00
+12	auth	0010_alter_group_name_max_length	2021-12-14 11:20:36.048196+00
+13	auth	0011_update_proxy_permissions	2021-12-14 11:20:36.057187+00
+14	auth	0012_alter_user_first_name_max_length	2021-12-14 11:20:36.065129+00
+15	user	0001_initial	2021-12-14 11:20:36.109247+00
+16	account	0001_initial	2021-12-14 11:20:36.151543+00
+17	account	0002_email_max_length	2021-12-14 11:20:36.162781+00
+18	account	0003_auto_20211214_1120	2021-12-14 11:20:36.24408+00
+19	admin	0001_initial	2021-12-14 11:20:36.298847+00
+20	admin	0002_logentry_remove_auto_add	2021-12-14 11:20:36.311485+00
+21	admin	0003_logentry_add_action_flag_choices	2021-12-14 11:20:36.325466+00
+22	authtoken	0001_initial	2021-12-14 11:20:36.347657+00
+23	authtoken	0002_auto_20160226_1747	2021-12-14 11:20:36.382501+00
+24	authtoken	0003_tokenproxy	2021-12-14 11:20:36.386368+00
+25	products	0001_initial	2021-12-14 11:20:36.430308+00
+26	cart	0001_initial	2021-12-14 11:20:36.540838+00
+27	sessions	0001_initial	2021-12-14 11:20:36.556493+00
+28	sites	0001_initial	2021-12-14 11:20:36.564593+00
+29	sites	0002_alter_domain_unique	2021-12-14 11:20:36.574067+00
 \.
 
 
 --
--- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: shopping_cart
+-- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 27, true);
+SELECT pg_catalog.setval('tiger.django_migrations_id_seq', 29, true);
 
 
 --
--- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: shopping_cart
+-- Data for Name: django_session; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
 --
 
-COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
+COPY tiger.django_session (session_key, session_data, expire_date) FROM stdin;
 \.
 
 
 --
--- Data for Name: django_site; Type: TABLE DATA; Schema: public; Owner: shopping_cart
+-- Data for Name: django_site; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
 --
 
-COPY public.django_site (id, domain, name) FROM stdin;
+COPY tiger.django_site (id, domain, name) FROM stdin;
 1	example.com	example.com
 \.
 
 
 --
--- Name: django_site_id_seq; Type: SEQUENCE SET; Schema: public; Owner: shopping_cart
+-- Name: django_site_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
 --
 
-SELECT pg_catalog.setval('public.django_site_id_seq', 1, true);
+SELECT pg_catalog.setval('tiger.django_site_id_seq', 1, true);
 
 
 --
--- Data for Name: spatial_ref_sys; Type: TABLE DATA; Schema: public; Owner: shopping_cart
+-- Data for Name: products_category; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
 --
 
-COPY public.spatial_ref_sys (srid, auth_name, auth_srid, srtext, proj4text) FROM stdin;
+COPY tiger.products_category (id, title, slug, created_at, updated_at) FROM stdin;
 \.
 
 
 --
--- Data for Name: user_user; Type: TABLE DATA; Schema: public; Owner: shopping_cart
+-- Name: products_category_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
 --
 
-COPY public.user_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined, phone, address, photo) FROM stdin;
+SELECT pg_catalog.setval('tiger.products_category_id_seq', 1, false);
+
+
+--
+-- Data for Name: products_product; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
+--
+
+COPY tiger.products_product (id, title, slug, description, price, available, in_stock, image, category_id) FROM stdin;
 \.
 
 
 --
--- Data for Name: user_user_groups; Type: TABLE DATA; Schema: public; Owner: shopping_cart
+-- Name: products_product_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
 --
 
-COPY public.user_user_groups (id, user_id, group_id) FROM stdin;
+SELECT pg_catalog.setval('tiger.products_product_id_seq', 1, false);
+
+
+--
+-- Data for Name: user_user; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
+--
+
+COPY tiger.user_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined, phone, address, photo) FROM stdin;
+1	pbkdf2_sha256$260000$BKD3Zv58rLh9KUQW0pUNHz$hQiaEt39pMCCFOUPuSEPp9n0FM+q4tYwfPb5hnYXmwc=	\N	t	admin			admin@gmail.com	t	t	2021-12-16 08:50:47.900736+00	\N	\N	
+2	pbkdf2_sha256$260000$dCcCJgfKrIiaPHjAuoRS7t$0xd9GddqxPcTRnq9M0bVeXUF9OqSBdZ5PkBT0IcyR3k=	\N	f	user_1				f	t	2021-12-16 08:54:54.985289+00	\N	\N	
+3	pbkdf2_sha256$260000$nd9J3iMmnseMvmURcjOVkO$LzblNiyYX1LUXt0H/UM5YdOapcLUojQeaVWeitTLVJw=	\N	f	user_2				f	t	2021-12-16 08:57:40.780371+00	\N	\N	
 \.
 
 
 --
--- Name: user_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: shopping_cart
+-- Data for Name: user_user_groups; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
 --
 
-SELECT pg_catalog.setval('public.user_user_groups_id_seq', 1, false);
-
-
---
--- Name: user_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: shopping_cart
---
-
-SELECT pg_catalog.setval('public.user_user_id_seq', 1, false);
-
-
---
--- Data for Name: user_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: shopping_cart
---
-
-COPY public.user_user_user_permissions (id, user_id, permission_id) FROM stdin;
+COPY tiger.user_user_groups (id, user_id, group_id) FROM stdin;
 \.
 
 
 --
--- Name: user_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: shopping_cart
+-- Name: user_user_groups_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
 --
 
-SELECT pg_catalog.setval('public.user_user_user_permissions_id_seq', 1, false);
+SELECT pg_catalog.setval('tiger.user_user_groups_id_seq', 1, false);
 
 
 --
--- Data for Name: geocode_settings; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
+-- Name: user_user_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
 --
 
-COPY tiger.geocode_settings (name, setting, unit, category, short_desc) FROM stdin;
+SELECT pg_catalog.setval('tiger.user_user_id_seq', 3, true);
+
+
+--
+-- Data for Name: user_user_user_permissions; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
+--
+
+COPY tiger.user_user_user_permissions (id, user_id, permission_id) FROM stdin;
 \.
 
 
 --
--- Data for Name: pagc_gaz; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
+-- Name: user_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: tiger; Owner: shopping_cart
 --
 
-COPY tiger.pagc_gaz (id, seq, word, stdword, token, is_custom) FROM stdin;
-\.
-
-
---
--- Data for Name: pagc_lex; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
---
-
-COPY tiger.pagc_lex (id, seq, word, stdword, token, is_custom) FROM stdin;
-\.
+SELECT pg_catalog.setval('tiger.user_user_user_permissions_id_seq', 1, false);
 
 
 --
--- Data for Name: pagc_rules; Type: TABLE DATA; Schema: tiger; Owner: shopping_cart
+-- Name: account_emailaddress account_emailaddress_email_key; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-COPY tiger.pagc_rules (id, rule, is_custom) FROM stdin;
-\.
-
-
---
--- Data for Name: topology; Type: TABLE DATA; Schema: topology; Owner: shopping_cart
---
-
-COPY topology.topology (id, name, srid, "precision", hasz) FROM stdin;
-\.
-
-
---
--- Data for Name: layer; Type: TABLE DATA; Schema: topology; Owner: shopping_cart
---
-
-COPY topology.layer (topology_id, layer_id, schema_name, table_name, feature_column, feature_type, level, child_id) FROM stdin;
-\.
-
-
---
--- Name: account_emailaddress account_emailaddress_email_key; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
---
-
-ALTER TABLE ONLY public.account_emailaddress
+ALTER TABLE ONLY tiger.account_emailaddress
     ADD CONSTRAINT account_emailaddress_email_key UNIQUE (email);
 
 
 --
--- Name: account_emailaddress account_emailaddress_pkey; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: account_emailaddress account_emailaddress_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.account_emailaddress
+ALTER TABLE ONLY tiger.account_emailaddress
     ADD CONSTRAINT account_emailaddress_pkey PRIMARY KEY (id);
 
 
 --
--- Name: account_emailconfirmation account_emailconfirmation_key_key; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: account_emailconfirmation account_emailconfirmation_key_key; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.account_emailconfirmation
+ALTER TABLE ONLY tiger.account_emailconfirmation
     ADD CONSTRAINT account_emailconfirmation_key_key UNIQUE (key);
 
 
 --
--- Name: account_emailconfirmation account_emailconfirmation_pkey; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: account_emailconfirmation account_emailconfirmation_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.account_emailconfirmation
+ALTER TABLE ONLY tiger.account_emailconfirmation
     ADD CONSTRAINT account_emailconfirmation_pkey PRIMARY KEY (id);
 
 
 --
--- Name: auth_group auth_group_name_key; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: auth_group auth_group_name_key; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.auth_group
+ALTER TABLE ONLY tiger.auth_group
     ADD CONSTRAINT auth_group_name_key UNIQUE (name);
 
 
 --
--- Name: auth_group_permissions auth_group_permissions_group_id_permission_id_0cd325b0_uniq; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: auth_group_permissions auth_group_permissions_group_id_permission_id_0cd325b0_uniq; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.auth_group_permissions
+ALTER TABLE ONLY tiger.auth_group_permissions
     ADD CONSTRAINT auth_group_permissions_group_id_permission_id_0cd325b0_uniq UNIQUE (group_id, permission_id);
 
 
 --
--- Name: auth_group_permissions auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: auth_group_permissions auth_group_permissions_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.auth_group_permissions
+ALTER TABLE ONLY tiger.auth_group_permissions
     ADD CONSTRAINT auth_group_permissions_pkey PRIMARY KEY (id);
 
 
 --
--- Name: auth_group auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: auth_group auth_group_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.auth_group
+ALTER TABLE ONLY tiger.auth_group
     ADD CONSTRAINT auth_group_pkey PRIMARY KEY (id);
 
 
 --
--- Name: auth_permission auth_permission_content_type_id_codename_01ab375a_uniq; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: auth_permission auth_permission_content_type_id_codename_01ab375a_uniq; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.auth_permission
+ALTER TABLE ONLY tiger.auth_permission
     ADD CONSTRAINT auth_permission_content_type_id_codename_01ab375a_uniq UNIQUE (content_type_id, codename);
 
 
 --
--- Name: auth_permission auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: auth_permission auth_permission_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.auth_permission
+ALTER TABLE ONLY tiger.auth_permission
     ADD CONSTRAINT auth_permission_pkey PRIMARY KEY (id);
 
 
 --
--- Name: authtoken_token authtoken_token_pkey; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: authtoken_token authtoken_token_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.authtoken_token
+ALTER TABLE ONLY tiger.authtoken_token
     ADD CONSTRAINT authtoken_token_pkey PRIMARY KEY (key);
 
 
 --
--- Name: authtoken_token authtoken_token_user_id_key; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: authtoken_token authtoken_token_user_id_key; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.authtoken_token
+ALTER TABLE ONLY tiger.authtoken_token
     ADD CONSTRAINT authtoken_token_user_id_key UNIQUE (user_id);
 
 
 --
--- Name: django_admin_log django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: cart_cart cart_cart_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.django_admin_log
+ALTER TABLE ONLY tiger.cart_cart
+    ADD CONSTRAINT cart_cart_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cart_cartitem cart_cartitem_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.cart_cartitem
+    ADD CONSTRAINT cart_cartitem_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_admin_log django_admin_log_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.django_admin_log
     ADD CONSTRAINT django_admin_log_pkey PRIMARY KEY (id);
 
 
 --
--- Name: django_content_type django_content_type_app_label_model_76bd3d3b_uniq; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: django_content_type django_content_type_app_label_model_76bd3d3b_uniq; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.django_content_type
+ALTER TABLE ONLY tiger.django_content_type
     ADD CONSTRAINT django_content_type_app_label_model_76bd3d3b_uniq UNIQUE (app_label, model);
 
 
 --
--- Name: django_content_type django_content_type_pkey; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: django_content_type django_content_type_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.django_content_type
+ALTER TABLE ONLY tiger.django_content_type
     ADD CONSTRAINT django_content_type_pkey PRIMARY KEY (id);
 
 
 --
--- Name: django_migrations django_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: django_migrations django_migrations_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.django_migrations
+ALTER TABLE ONLY tiger.django_migrations
     ADD CONSTRAINT django_migrations_pkey PRIMARY KEY (id);
 
 
 --
--- Name: django_session django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: django_session django_session_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.django_session
+ALTER TABLE ONLY tiger.django_session
     ADD CONSTRAINT django_session_pkey PRIMARY KEY (session_key);
 
 
 --
--- Name: django_site django_site_domain_a2e37b91_uniq; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: django_site django_site_domain_a2e37b91_uniq; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.django_site
+ALTER TABLE ONLY tiger.django_site
     ADD CONSTRAINT django_site_domain_a2e37b91_uniq UNIQUE (domain);
 
 
 --
--- Name: django_site django_site_pkey; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: django_site django_site_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.django_site
+ALTER TABLE ONLY tiger.django_site
     ADD CONSTRAINT django_site_pkey PRIMARY KEY (id);
 
 
 --
--- Name: user_user_groups user_user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: products_category products_category_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.user_user_groups
+ALTER TABLE ONLY tiger.products_category
+    ADD CONSTRAINT products_category_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: products_category products_category_slug_key; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.products_category
+    ADD CONSTRAINT products_category_slug_key UNIQUE (slug);
+
+
+--
+-- Name: products_product products_product_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.products_product
+    ADD CONSTRAINT products_product_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user_user_groups user_user_groups_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.user_user_groups
     ADD CONSTRAINT user_user_groups_pkey PRIMARY KEY (id);
 
 
 --
--- Name: user_user_groups user_user_groups_user_id_group_id_bb60391f_uniq; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: user_user_groups user_user_groups_user_id_group_id_bb60391f_uniq; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.user_user_groups
+ALTER TABLE ONLY tiger.user_user_groups
     ADD CONSTRAINT user_user_groups_user_id_group_id_bb60391f_uniq UNIQUE (user_id, group_id);
 
 
 --
--- Name: user_user user_user_pkey; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: user_user user_user_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.user_user
+ALTER TABLE ONLY tiger.user_user
     ADD CONSTRAINT user_user_pkey PRIMARY KEY (id);
 
 
 --
--- Name: user_user_user_permissions user_user_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: user_user_user_permissions user_user_user_permissions_pkey; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.user_user_user_permissions
+ALTER TABLE ONLY tiger.user_user_user_permissions
     ADD CONSTRAINT user_user_user_permissions_pkey PRIMARY KEY (id);
 
 
 --
--- Name: user_user_user_permissions user_user_user_permissions_user_id_permission_id_64f4d5b8_uniq; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: user_user_user_permissions user_user_user_permissions_user_id_permission_id_64f4d5b8_uniq; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.user_user_user_permissions
+ALTER TABLE ONLY tiger.user_user_user_permissions
     ADD CONSTRAINT user_user_user_permissions_user_id_permission_id_64f4d5b8_uniq UNIQUE (user_id, permission_id);
 
 
 --
--- Name: user_user user_user_username_key; Type: CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: user_user user_user_username_key; Type: CONSTRAINT; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.user_user
+ALTER TABLE ONLY tiger.user_user
     ADD CONSTRAINT user_user_username_key UNIQUE (username);
 
 
 --
--- Name: account_emailaddress_email_03be32b2_like; Type: INDEX; Schema: public; Owner: shopping_cart
+-- Name: account_emailaddress_email_03be32b2_like; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE INDEX account_emailaddress_email_03be32b2_like ON public.account_emailaddress USING btree (email varchar_pattern_ops);
-
-
---
--- Name: account_emailaddress_user_id_2c513194; Type: INDEX; Schema: public; Owner: shopping_cart
---
-
-CREATE INDEX account_emailaddress_user_id_2c513194 ON public.account_emailaddress USING btree (user_id);
+CREATE INDEX account_emailaddress_email_03be32b2_like ON tiger.account_emailaddress USING btree (email varchar_pattern_ops);
 
 
 --
--- Name: account_emailconfirmation_email_address_id_5b7f8c58; Type: INDEX; Schema: public; Owner: shopping_cart
+-- Name: account_emailaddress_user_id_2c513194; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE INDEX account_emailconfirmation_email_address_id_5b7f8c58 ON public.account_emailconfirmation USING btree (email_address_id);
-
-
---
--- Name: account_emailconfirmation_key_f43612bd_like; Type: INDEX; Schema: public; Owner: shopping_cart
---
-
-CREATE INDEX account_emailconfirmation_key_f43612bd_like ON public.account_emailconfirmation USING btree (key varchar_pattern_ops);
+CREATE INDEX account_emailaddress_user_id_2c513194 ON tiger.account_emailaddress USING btree (user_id);
 
 
 --
--- Name: auth_group_name_a6ea08ec_like; Type: INDEX; Schema: public; Owner: shopping_cart
+-- Name: account_emailconfirmation_email_address_id_5b7f8c58; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE INDEX auth_group_name_a6ea08ec_like ON public.auth_group USING btree (name varchar_pattern_ops);
-
-
---
--- Name: auth_group_permissions_group_id_b120cbf9; Type: INDEX; Schema: public; Owner: shopping_cart
---
-
-CREATE INDEX auth_group_permissions_group_id_b120cbf9 ON public.auth_group_permissions USING btree (group_id);
+CREATE INDEX account_emailconfirmation_email_address_id_5b7f8c58 ON tiger.account_emailconfirmation USING btree (email_address_id);
 
 
 --
--- Name: auth_group_permissions_permission_id_84c5c92e; Type: INDEX; Schema: public; Owner: shopping_cart
+-- Name: account_emailconfirmation_key_f43612bd_like; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE INDEX auth_group_permissions_permission_id_84c5c92e ON public.auth_group_permissions USING btree (permission_id);
-
-
---
--- Name: auth_permission_content_type_id_2f476e4b; Type: INDEX; Schema: public; Owner: shopping_cart
---
-
-CREATE INDEX auth_permission_content_type_id_2f476e4b ON public.auth_permission USING btree (content_type_id);
+CREATE INDEX account_emailconfirmation_key_f43612bd_like ON tiger.account_emailconfirmation USING btree (key varchar_pattern_ops);
 
 
 --
--- Name: authtoken_token_key_10f0b77e_like; Type: INDEX; Schema: public; Owner: shopping_cart
+-- Name: auth_group_name_a6ea08ec_like; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE INDEX authtoken_token_key_10f0b77e_like ON public.authtoken_token USING btree (key varchar_pattern_ops);
-
-
---
--- Name: django_admin_log_content_type_id_c4bce8eb; Type: INDEX; Schema: public; Owner: shopping_cart
---
-
-CREATE INDEX django_admin_log_content_type_id_c4bce8eb ON public.django_admin_log USING btree (content_type_id);
+CREATE INDEX auth_group_name_a6ea08ec_like ON tiger.auth_group USING btree (name varchar_pattern_ops);
 
 
 --
--- Name: django_admin_log_user_id_c564eba6; Type: INDEX; Schema: public; Owner: shopping_cart
+-- Name: auth_group_permissions_group_id_b120cbf9; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE INDEX django_admin_log_user_id_c564eba6 ON public.django_admin_log USING btree (user_id);
-
-
---
--- Name: django_session_expire_date_a5c62663; Type: INDEX; Schema: public; Owner: shopping_cart
---
-
-CREATE INDEX django_session_expire_date_a5c62663 ON public.django_session USING btree (expire_date);
+CREATE INDEX auth_group_permissions_group_id_b120cbf9 ON tiger.auth_group_permissions USING btree (group_id);
 
 
 --
--- Name: django_session_session_key_c0390e0f_like; Type: INDEX; Schema: public; Owner: shopping_cart
+-- Name: auth_group_permissions_permission_id_84c5c92e; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE INDEX django_session_session_key_c0390e0f_like ON public.django_session USING btree (session_key varchar_pattern_ops);
-
-
---
--- Name: django_site_domain_a2e37b91_like; Type: INDEX; Schema: public; Owner: shopping_cart
---
-
-CREATE INDEX django_site_domain_a2e37b91_like ON public.django_site USING btree (domain varchar_pattern_ops);
+CREATE INDEX auth_group_permissions_permission_id_84c5c92e ON tiger.auth_group_permissions USING btree (permission_id);
 
 
 --
--- Name: user_user_groups_group_id_c57f13c0; Type: INDEX; Schema: public; Owner: shopping_cart
+-- Name: auth_permission_content_type_id_2f476e4b; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE INDEX user_user_groups_group_id_c57f13c0 ON public.user_user_groups USING btree (group_id);
-
-
---
--- Name: user_user_groups_user_id_13f9a20d; Type: INDEX; Schema: public; Owner: shopping_cart
---
-
-CREATE INDEX user_user_groups_user_id_13f9a20d ON public.user_user_groups USING btree (user_id);
+CREATE INDEX auth_permission_content_type_id_2f476e4b ON tiger.auth_permission USING btree (content_type_id);
 
 
 --
--- Name: user_user_user_permissions_permission_id_ce49d4de; Type: INDEX; Schema: public; Owner: shopping_cart
+-- Name: authtoken_token_key_10f0b77e_like; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE INDEX user_user_user_permissions_permission_id_ce49d4de ON public.user_user_user_permissions USING btree (permission_id);
-
-
---
--- Name: user_user_user_permissions_user_id_31782f58; Type: INDEX; Schema: public; Owner: shopping_cart
---
-
-CREATE INDEX user_user_user_permissions_user_id_31782f58 ON public.user_user_user_permissions USING btree (user_id);
+CREATE INDEX authtoken_token_key_10f0b77e_like ON tiger.authtoken_token USING btree (key varchar_pattern_ops);
 
 
 --
--- Name: user_user_username_e2bdfe0c_like; Type: INDEX; Schema: public; Owner: shopping_cart
+-- Name: cart_cart_user_id_9b4220b9; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-CREATE INDEX user_user_username_e2bdfe0c_like ON public.user_user USING btree (username varchar_pattern_ops);
-
-
---
--- Name: account_emailaddress account_emailaddress_user_id_2c513194_fk_user_user_id; Type: FK CONSTRAINT; Schema: public; Owner: shopping_cart
---
-
-ALTER TABLE ONLY public.account_emailaddress
-    ADD CONSTRAINT account_emailaddress_user_id_2c513194_fk_user_user_id FOREIGN KEY (user_id) REFERENCES public.user_user(id) DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX cart_cart_user_id_9b4220b9 ON tiger.cart_cart USING btree (user_id);
 
 
 --
--- Name: account_emailconfirmation account_emailconfirmation_email_address_id_5b7f8c58_fk; Type: FK CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: cart_cartitem_cart_id_370ad265; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.account_emailconfirmation
-    ADD CONSTRAINT account_emailconfirmation_email_address_id_5b7f8c58_fk FOREIGN KEY (email_address_id) REFERENCES public.account_emailaddress(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: auth_group_permissions auth_group_permissio_permission_id_84c5c92e_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: shopping_cart
---
-
-ALTER TABLE ONLY public.auth_group_permissions
-    ADD CONSTRAINT auth_group_permissio_permission_id_84c5c92e_fk_auth_perm FOREIGN KEY (permission_id) REFERENCES public.auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX cart_cartitem_cart_id_370ad265 ON tiger.cart_cartitem USING btree (cart_id);
 
 
 --
--- Name: auth_group_permissions auth_group_permissions_group_id_b120cbf9_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: cart_cartitem_product_id_b24e265a; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.auth_group_permissions
-    ADD CONSTRAINT auth_group_permissions_group_id_b120cbf9_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES public.auth_group(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: auth_permission auth_permission_content_type_id_2f476e4b_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: shopping_cart
---
-
-ALTER TABLE ONLY public.auth_permission
-    ADD CONSTRAINT auth_permission_content_type_id_2f476e4b_fk_django_co FOREIGN KEY (content_type_id) REFERENCES public.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX cart_cartitem_product_id_b24e265a ON tiger.cart_cartitem USING btree (product_id);
 
 
 --
--- Name: authtoken_token authtoken_token_user_id_35299eff_fk_user_user_id; Type: FK CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: django_admin_log_content_type_id_c4bce8eb; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.authtoken_token
-    ADD CONSTRAINT authtoken_token_user_id_35299eff_fk_user_user_id FOREIGN KEY (user_id) REFERENCES public.user_user(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: django_admin_log django_admin_log_content_type_id_c4bce8eb_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: shopping_cart
---
-
-ALTER TABLE ONLY public.django_admin_log
-    ADD CONSTRAINT django_admin_log_content_type_id_c4bce8eb_fk_django_co FOREIGN KEY (content_type_id) REFERENCES public.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX django_admin_log_content_type_id_c4bce8eb ON tiger.django_admin_log USING btree (content_type_id);
 
 
 --
--- Name: django_admin_log django_admin_log_user_id_c564eba6_fk_user_user_id; Type: FK CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: django_admin_log_user_id_c564eba6; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.django_admin_log
-    ADD CONSTRAINT django_admin_log_user_id_c564eba6_fk_user_user_id FOREIGN KEY (user_id) REFERENCES public.user_user(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: user_user_groups user_user_groups_group_id_c57f13c0_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: shopping_cart
---
-
-ALTER TABLE ONLY public.user_user_groups
-    ADD CONSTRAINT user_user_groups_group_id_c57f13c0_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES public.auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX django_admin_log_user_id_c564eba6 ON tiger.django_admin_log USING btree (user_id);
 
 
 --
--- Name: user_user_groups user_user_groups_user_id_13f9a20d_fk_user_user_id; Type: FK CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: django_session_expire_date_a5c62663; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.user_user_groups
-    ADD CONSTRAINT user_user_groups_user_id_13f9a20d_fk_user_user_id FOREIGN KEY (user_id) REFERENCES public.user_user(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: user_user_user_permissions user_user_user_permi_permission_id_ce49d4de_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: shopping_cart
---
-
-ALTER TABLE ONLY public.user_user_user_permissions
-    ADD CONSTRAINT user_user_user_permi_permission_id_ce49d4de_fk_auth_perm FOREIGN KEY (permission_id) REFERENCES public.auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX django_session_expire_date_a5c62663 ON tiger.django_session USING btree (expire_date);
 
 
 --
--- Name: user_user_user_permissions user_user_user_permissions_user_id_31782f58_fk_user_user_id; Type: FK CONSTRAINT; Schema: public; Owner: shopping_cart
+-- Name: django_session_session_key_c0390e0f_like; Type: INDEX; Schema: tiger; Owner: shopping_cart
 --
 
-ALTER TABLE ONLY public.user_user_user_permissions
-    ADD CONSTRAINT user_user_user_permissions_user_id_31782f58_fk_user_user_id FOREIGN KEY (user_id) REFERENCES public.user_user(id) DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX django_session_session_key_c0390e0f_like ON tiger.django_session USING btree (session_key varchar_pattern_ops);
+
+
+--
+-- Name: django_site_domain_a2e37b91_like; Type: INDEX; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE INDEX django_site_domain_a2e37b91_like ON tiger.django_site USING btree (domain varchar_pattern_ops);
+
+
+--
+-- Name: products_category_slug_c558efae_like; Type: INDEX; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE INDEX products_category_slug_c558efae_like ON tiger.products_category USING btree (slug varchar_pattern_ops);
+
+
+--
+-- Name: products_category_title_3e22be6c; Type: INDEX; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE INDEX products_category_title_3e22be6c ON tiger.products_category USING btree (title);
+
+
+--
+-- Name: products_category_title_3e22be6c_like; Type: INDEX; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE INDEX products_category_title_3e22be6c_like ON tiger.products_category USING btree (title varchar_pattern_ops);
+
+
+--
+-- Name: products_product_category_id_9b594869; Type: INDEX; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE INDEX products_product_category_id_9b594869 ON tiger.products_product USING btree (category_id);
+
+
+--
+-- Name: products_product_slug_70d3148d; Type: INDEX; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE INDEX products_product_slug_70d3148d ON tiger.products_product USING btree (slug);
+
+
+--
+-- Name: products_product_slug_70d3148d_like; Type: INDEX; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE INDEX products_product_slug_70d3148d_like ON tiger.products_product USING btree (slug varchar_pattern_ops);
+
+
+--
+-- Name: products_product_title_659cf449; Type: INDEX; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE INDEX products_product_title_659cf449 ON tiger.products_product USING btree (title);
+
+
+--
+-- Name: products_product_title_659cf449_like; Type: INDEX; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE INDEX products_product_title_659cf449_like ON tiger.products_product USING btree (title varchar_pattern_ops);
+
+
+--
+-- Name: user_user_groups_group_id_c57f13c0; Type: INDEX; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE INDEX user_user_groups_group_id_c57f13c0 ON tiger.user_user_groups USING btree (group_id);
+
+
+--
+-- Name: user_user_groups_user_id_13f9a20d; Type: INDEX; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE INDEX user_user_groups_user_id_13f9a20d ON tiger.user_user_groups USING btree (user_id);
+
+
+--
+-- Name: user_user_user_permissions_permission_id_ce49d4de; Type: INDEX; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE INDEX user_user_user_permissions_permission_id_ce49d4de ON tiger.user_user_user_permissions USING btree (permission_id);
+
+
+--
+-- Name: user_user_user_permissions_user_id_31782f58; Type: INDEX; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE INDEX user_user_user_permissions_user_id_31782f58 ON tiger.user_user_user_permissions USING btree (user_id);
+
+
+--
+-- Name: user_user_username_e2bdfe0c_like; Type: INDEX; Schema: tiger; Owner: shopping_cart
+--
+
+CREATE INDEX user_user_username_e2bdfe0c_like ON tiger.user_user USING btree (username varchar_pattern_ops);
+
+
+--
+-- Name: account_emailaddress account_emailaddress_user_id_2c513194_fk_user_user_id; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.account_emailaddress
+    ADD CONSTRAINT account_emailaddress_user_id_2c513194_fk_user_user_id FOREIGN KEY (user_id) REFERENCES tiger.user_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: account_emailconfirmation account_emailconfirmation_email_address_id_5b7f8c58_fk; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.account_emailconfirmation
+    ADD CONSTRAINT account_emailconfirmation_email_address_id_5b7f8c58_fk FOREIGN KEY (email_address_id) REFERENCES tiger.account_emailaddress(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_group_permissions auth_group_permissio_permission_id_84c5c92e_fk_auth_perm; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.auth_group_permissions
+    ADD CONSTRAINT auth_group_permissio_permission_id_84c5c92e_fk_auth_perm FOREIGN KEY (permission_id) REFERENCES tiger.auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_group_permissions auth_group_permissions_group_id_b120cbf9_fk_auth_group_id; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_group_id_b120cbf9_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES tiger.auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_permission auth_permission_content_type_id_2f476e4b_fk_django_co; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.auth_permission
+    ADD CONSTRAINT auth_permission_content_type_id_2f476e4b_fk_django_co FOREIGN KEY (content_type_id) REFERENCES tiger.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: authtoken_token authtoken_token_user_id_35299eff_fk_user_user_id; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.authtoken_token
+    ADD CONSTRAINT authtoken_token_user_id_35299eff_fk_user_user_id FOREIGN KEY (user_id) REFERENCES tiger.user_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: cart_cart cart_cart_user_id_9b4220b9_fk_user_user_id; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.cart_cart
+    ADD CONSTRAINT cart_cart_user_id_9b4220b9_fk_user_user_id FOREIGN KEY (user_id) REFERENCES tiger.user_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: cart_cartitem cart_cartitem_cart_id_370ad265_fk_cart_cart_id; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.cart_cartitem
+    ADD CONSTRAINT cart_cartitem_cart_id_370ad265_fk_cart_cart_id FOREIGN KEY (cart_id) REFERENCES tiger.cart_cart(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: cart_cartitem cart_cartitem_product_id_b24e265a_fk_products_product_id; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.cart_cartitem
+    ADD CONSTRAINT cart_cartitem_product_id_b24e265a_fk_products_product_id FOREIGN KEY (product_id) REFERENCES tiger.products_product(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: django_admin_log django_admin_log_content_type_id_c4bce8eb_fk_django_co; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.django_admin_log
+    ADD CONSTRAINT django_admin_log_content_type_id_c4bce8eb_fk_django_co FOREIGN KEY (content_type_id) REFERENCES tiger.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: django_admin_log django_admin_log_user_id_c564eba6_fk_user_user_id; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.django_admin_log
+    ADD CONSTRAINT django_admin_log_user_id_c564eba6_fk_user_user_id FOREIGN KEY (user_id) REFERENCES tiger.user_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: products_product products_product_category_id_9b594869_fk_products_category_id; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.products_product
+    ADD CONSTRAINT products_product_category_id_9b594869_fk_products_category_id FOREIGN KEY (category_id) REFERENCES tiger.products_category(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: user_user_groups user_user_groups_group_id_c57f13c0_fk_auth_group_id; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.user_user_groups
+    ADD CONSTRAINT user_user_groups_group_id_c57f13c0_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES tiger.auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: user_user_groups user_user_groups_user_id_13f9a20d_fk_user_user_id; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.user_user_groups
+    ADD CONSTRAINT user_user_groups_user_id_13f9a20d_fk_user_user_id FOREIGN KEY (user_id) REFERENCES tiger.user_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: user_user_user_permissions user_user_user_permi_permission_id_ce49d4de_fk_auth_perm; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.user_user_user_permissions
+    ADD CONSTRAINT user_user_user_permi_permission_id_ce49d4de_fk_auth_perm FOREIGN KEY (permission_id) REFERENCES tiger.auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: user_user_user_permissions user_user_user_permissions_user_id_31782f58_fk_user_user_id; Type: FK CONSTRAINT; Schema: tiger; Owner: shopping_cart
+--
+
+ALTER TABLE ONLY tiger.user_user_user_permissions
+    ADD CONSTRAINT user_user_user_permissions_user_id_31782f58_fk_user_user_id FOREIGN KEY (user_id) REFERENCES tiger.user_user(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
