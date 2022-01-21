@@ -1,5 +1,7 @@
-from rest_framework.generics import ListCreateAPIView, UpdateAPIView, DestroyAPIView
-from cart.models import Cart, CartItem
+from rest_framework.generics import DestroyAPIView, ListCreateAPIView, UpdateAPIView
+from rest_framework.response import Response
+
+from cart.models import CartItem
 from cart.serializers import CartItemSerializer
 
 
@@ -12,7 +14,13 @@ class CartItemListCreateAPIView(ListCreateAPIView):
 
     def list(self, request, *args, **kwargs):
         response = super().list(request, *args, **kwargs)
-        #return Response({"result": serializer.data, "total_amount": queryset.user})
+        return Response(
+            {"result": response.data, "total_amount": request.user.cart.total()}
+        )
+
+    def create(self, request, *args, **kwargs):
+        request.data["cart"] = request.user.cart
+        return super().create(request, *args, **kwargs)
 
 
 class CartItemUpdateDestroyAPIView(UpdateAPIView, DestroyAPIView):
