@@ -8,7 +8,6 @@ def create_cart_for_user(apps, schema_editor):
     cart = apps.get_model("cart", "Cart")
     for user in users.objects.all():
         cart.objects.create(user__id=user.id)
-        cart.save()
 
 
 class Migration(migrations.Migration):
