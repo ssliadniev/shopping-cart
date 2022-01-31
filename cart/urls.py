@@ -7,10 +7,10 @@ app_name = "cart"
 
 
 urlpatterns = [
-    path("", CartItemListCreateAPIView.as_view(), name="cart_item-list-create"),
+    path("", CartItemListCreateAPIView.as_view(), name="cart-item-list-create"),
     path(
         "<int:pk>/",
         CartItemUpdateDestroyAPIView.as_view(),
-        name="cart_item-update-destroy",
+        name="cart-item-update-destroy",
     ),
 ]
