@@ -11,8 +11,7 @@ class Cart(models.Model):
         ordering = ("user",)
 
     def total(self):
-        total_prod = CartItem.objects.filter(cart=self)
-        return sum([cart_item.get_sub_total() for cart_item in total_prod])
+        return sum([cart_item.get_sub_total() for cart_item in self.cart_items])
 
     def __str__(self):
         return self.user
