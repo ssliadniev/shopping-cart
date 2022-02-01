@@ -115,7 +115,6 @@ class ProductsTestCase(TransactionTestCase):
 
     def test_create_product_admin(self):
         expected_data = {
-            "pk": 5,
             "category": {"pk": 4, "title": "Category_4"},
             "title": "Product_5",
             "slug": "product5",
@@ -137,6 +136,7 @@ class ProductsTestCase(TransactionTestCase):
         }
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, HTTP_201_CREATED)
+        response.data.pop("pk")
         self.assertEqual(response.data, expected_data)
 
     def test_create_product_user(self):

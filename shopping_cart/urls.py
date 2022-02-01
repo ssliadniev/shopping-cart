@@ -9,7 +9,8 @@ schema_view = get_swagger_view(title="Shopping Cart Swagger")
 
 main_urls = [
     path('user/', include('user.urls', namespace="user")),
-    path('products/', include('products.urls', namespace="product"))
+    path('products/', include('products.urls', namespace="product")),
+    path('cart/', include('cart.urls', namespace="cart"))
 ]
 
 urlpatterns = [
