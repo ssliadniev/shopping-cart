@@ -3,3 +3,8 @@ djangorestframework==3.12.4
 invoke==1.6.0
 django_filter==2.4.0
 django-environ~=0.8.0
+django-rest-auth==0.9.5
+django-allauth==0.45.0
+django-rest-swagger==2.2.0
+psycopg2-binary==2.9.3
+Pillow==9.0.0
