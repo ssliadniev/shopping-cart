@@ -7,7 +7,7 @@ def create_cart_for_user(apps, schema_editor):
     users = apps.get_model("user", "User")
     cart = apps.get_model("cart", "Cart")
     for user in users.objects.all():
-        cart.objects.create(user__id=user.id)
+        cart.objects.create(user=users.objects.get(pk=user.id))
 
 
 class Migration(migrations.Migration):
