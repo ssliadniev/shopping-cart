@@ -11,15 +11,17 @@ class Cart(models.Model):
         ordering = ("user",)
 
     def total(self):
-        return sum([cart_item.get_sub_total() for cart_item in self.cart_items])
+        return sum([cart_item.get_sub_total() for cart_item in self.cart_items.all()])
 
     def __str__(self):
-        return self.user
+        return f"{self.user.username}"
 
 
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name="cart_items")
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="cart_items")
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="cart_items"
+    )
     quantity = models.PositiveIntegerField(default=1)
 
     class Meta:
@@ -31,4 +33,4 @@ class CartItem(models.Model):
         return self.product.price * self.quantity
 
     def __str__(self):
-        return "{}: {}".format(self.cart, self.product)
+        return f"{self.product.title}"
