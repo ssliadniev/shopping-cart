@@ -1,0 +1,29 @@
+[
+{
+    "model": "cart.cartItem",
+    "pk": 1,
+    "fields": {
+        "cart": 1,
+        "product": 1,
+        "quantity": 13
+    }
+},
+{
+    "model": "cart.cartItem",
+    "pk": 2,
+    "fields": {
+        "cart": 2,
+        "product": 2,
+        "quantity": 10
+    }
+},
+{
+    "model": "cart.cartItem",
+    "pk": 3,
+    "fields": {
+        "cart": 3,
+        "product": 3,
+        "quantity": 5
+    }
+}
+]

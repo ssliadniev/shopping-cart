@@ -1,0 +1,86 @@
+[
+{
+   "model": "user.user",
+   "pk": 1,
+   "fields": {
+      "password": "pbkdf2_sha256$260000$mff0jJDCzBY5dwiVU3Z3hq$vBd1yGxQXxteMFaAIS7zgPJbooo1yl1DuA9sc0Y7ZfQ=",
+      "last_login": "2021-11-29T08:31:00Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "admin",
+      "last_name": "ADMIN",
+      "email": "admin@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2021-11-29T08:31:00Z",
+      "phone": null,
+      "address": null,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+   }
+},
+{
+   "model": "user.user",
+   "pk": 2,
+   "fields": {
+      "password": "!QAZXSW@",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "user1",
+      "first_name": "user1",
+      "last_name": "USER1",
+      "email": "user1@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2021-11-28T19:58:03Z",
+      "phone": null,
+      "address": null,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+   }
+},
+{
+   "model": "user.user",
+   "pk": 3,
+   "fields": {
+      "password": "!QAZXSW@@WSXZAQ!",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "staff_user1",
+      "first_name": "staff_user1",
+      "last_name": "STAFF_USER1",
+      "email": "staff_user2@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2021-11-28T19:58:03Z",
+      "phone": null,
+      "address": null,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+   }
+},
+{
+   "model": "user.user",
+   "pk": 4,
+   "fields": {
+      "password": "QWERTY!@#$%",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "not_activate_user1",
+      "first_name": "not_activate_user1",
+      "last_name": "NOT_ACTIVATE_USER1",
+      "email": "not_activate_user1@gmail.com",
+      "is_staff": false,
+      "is_active": false,
+      "date_joined": "2021-11-28T19:58:03Z",
+      "phone": null,
+      "address": null,
+      "photo": "",
+      "groups": [],
+      "user_permissions": []
+   }
+}
+]

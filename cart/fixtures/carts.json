@@ -1,0 +1,23 @@
+[
+{
+    "model": "cart.cart",
+    "pk": 1,
+    "fields": {
+        "user": 1
+    }
+},
+{
+    "model": "cart.cart",
+    "pk": 2,
+    "fields": {
+        "user": 2
+    }
+},
+{
+    "model": "cart.cart",
+    "pk": 3,
+    "fields": {
+        "user": 3
+    }
+}
+]
