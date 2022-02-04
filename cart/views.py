@@ -22,7 +22,9 @@ class CartItemListCreateAPIView(ListCreateAPIView):
         )
 
     def create(self, request, *args, **kwargs):
+        request.data._mutable = True
         request.data["cart"] = request.user.cart
+        request.data._mutable = False
         return super().create(request, *args, **kwargs)
 
 
