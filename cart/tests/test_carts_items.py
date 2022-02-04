@@ -1,15 +1,13 @@
+from collections import OrderedDict
+from decimal import Decimal
+
 from django.test import TransactionTestCase
 from django.urls import reverse
-from rest_framework.status import (
-    HTTP_200_OK,
-    HTTP_201_CREATED,
-    HTTP_204_NO_CONTENT,
-    HTTP_403_FORBIDDEN,
-    HTTP_405_METHOD_NOT_ALLOWED,
-)
+from rest_framework.status import (HTTP_200_OK, HTTP_204_NO_CONTENT,
+                                   HTTP_403_FORBIDDEN, HTTP_404_NOT_FOUND)
+
+from cart.models import CartItem
 from user.models import User
-from decimal import Decimal
-from collections import OrderedDict
 
 
 class CategoriesTestCase(TransactionTestCase):
@@ -26,7 +24,7 @@ class CategoriesTestCase(TransactionTestCase):
         response = self.client.get(reverse("cart:cart_item_list_create"))
         self.assertEqual(response.status_code, HTTP_403_FORBIDDEN)
 
-    def test_get_carts_login_user(self):
+    def test_get_cart_items_login_user(self):
         expected_data = [
             OrderedDict(
                 [
@@ -48,34 +46,64 @@ class CategoriesTestCase(TransactionTestCase):
             "Response data not equal expected data.",
         )
         self.assertEqual(
-            response.data["result"]["count"], 1, "Number of carts not equal 1."
-        )
-        self.assertEqual(
             response.data["total_amount"],
             expected_total_amount,
             "Response total amount not equal expected total amount.",
         )
 
-    def test_create_cart_item_anonymous(self):
+    def test_update_cart_item_anonymous(self):
         url = reverse("cart:cart_item_update_destroy", kwargs={"pk": 1})
-        data = {
-            "cart": 3,
-            "product": 3,
-            "quantity": 6
-        }
-        response = self.client.post(url, data)
+        data = {"cart": 1, "product": 3, "quantity": 6}
+        response = self.client.patch(url, data, content_type="application/json")
         self.assertEqual(response.status_code, HTTP_403_FORBIDDEN)
 
-    def test_create_cart_item_login_user(self):
+    def test_update_cart_item_login_user(self):
+        expected_data = {
+            "cart": 1,
+            "product": {"pk": 1, "title": "Product_1", "image": None},
+            "quantity": 4,
+            "sub_total": Decimal("494.16"),
+        }
         url = reverse("cart:cart_item_update_destroy", kwargs={"pk": 1})
         user = User.objects.get(pk=1)
         self.client.force_login(user)
-        data = {
-            "cart": 1,
-            "product": 3,
-            "quantity": 6
-        }
-        response = self.client.post(url, data)
+        data = {"cart": 1, "product": 2, "quantity": 4}
+        response = self.client.patch(url, data, content_type="application/json")
+        self.assertEqual(response.status_code, HTTP_200_OK)
+        self.assertEqual(response.data, expected_data)
+
+    def test_update_cart_item_for_another_user(self):
+        url = reverse("cart:cart_item_update_destroy", kwargs={"pk": 1})
+        user = User.objects.get(pk=2)
+        self.client.force_login(user)
+        data = {"cart": 1, "product": 3, "quantity": 20}
+        response = self.client.patch(url, data, content_type="application/json")
+        self.assertEqual(response.status_code, HTTP_404_NOT_FOUND)
+
+    def test_destroy_cart_item_anonymous(self):
+        url = reverse("cart:cart_item_update_destroy", kwargs={"pk": 1})
+        response = self.client.delete(url)
         self.assertEqual(response.status_code, HTTP_403_FORBIDDEN)
 
+    def test_destroy_cart_item_user(self):
+        user = User.objects.get(pk=2)
+        self.client.force_login(user)
+        url = reverse("cart:cart_item_update_destroy", kwargs={"pk": 2})
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, HTTP_204_NO_CONTENT)
+        self.assertFalse(CartItem.objects.filter(pk=2).exists())
 
+    def test_destroy_cart_item_admin(self):
+        user = User.objects.get(pk=1)
+        self.client.force_login(user)
+        url = reverse("cart:cart_item_update_destroy", kwargs={"pk": 1})
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, HTTP_204_NO_CONTENT)
+        self.assertFalse(CartItem.objects.filter(pk=1).exists())
+
+    def test_destroy_cart_item_for_another_user(self):
+        user = User.objects.get(pk=3)
+        self.client.force_login(user)
+        url = reverse("cart:cart_item_update_destroy", kwargs={"pk": 2})
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, HTTP_404_NOT_FOUND)
