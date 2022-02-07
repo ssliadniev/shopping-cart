@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, ValidationError
 
 from cart.models import CartItem
 from products.models import Product
@@ -20,9 +20,15 @@ class CartItemSerializer(ModelSerializer):
         model = CartItem
         fields = ("cart", "product", "quantity")
 
+    def validate(self, attrs):
+        instance = CartItem(**attrs)
+        if not instance.product.available:
+            raise ValidationError("Product isn't available.")
+        return attrs
+
     def update(self, instance, validated_data):
-        validated_data.pop("cart")
-        validated_data.pop("product")
+        validated_data.pop("cart", None)
+        validated_data.pop("product", None)
         return super().update(instance, validated_data)
 
     def to_representation(self, instance):
