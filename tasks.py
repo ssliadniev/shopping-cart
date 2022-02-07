@@ -22,3 +22,5 @@ def run_local(ctx):
     ctx.run("python ./manage.py makemigrations")
     ctx.run("python ./manage.py migrate")
     ctx.run("python ./manage.py runserver 0.0.0.0:8000")
+    ctx.run("uwsgi --ini uswgi.init")
+
